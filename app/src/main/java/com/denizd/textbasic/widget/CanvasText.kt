@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.text.StaticLayout
 import android.text.TextPaint
-import android.util.Log
 import com.denizd.textbasic.QuoteStorage
 import com.denizd.textbasic.R
 
@@ -20,7 +19,6 @@ class CanvasText {
 
             size?.let {
                 storage.setSize(size)
-//                Log.d("ASDF", "${size.first} + ${size.second}")
             }
 
             val widgetSize = storage.getSize()

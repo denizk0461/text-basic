@@ -1,6 +1,5 @@
 package com.denizd.textbasic
 
-import android.R
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -9,15 +8,14 @@ import kotlin.math.roundToInt
  */
 object ColorTransparentUtils {
     // This default color int
-    const val defaultColorID = R.color.black
+    const val defaultColorID = android.R.color.black
     const val defaultColor = "000000"
-    const val TAG = "ColorTransparentUtils"
 
     /**
-     * This method convert numver into hexa number or we can say transparent code
+     * This method convert number into hex number or we can say transparent code
      *
      * @param trans number of transparency you want
-     * @return it return hex decimal number or transparency code
+     * @return      hex decimal number or transparency code
      */
     fun convert(trans: Int): String {
         val hexString = Integer.toHexString((255 * trans / 100.0).roundToInt())
@@ -33,10 +31,10 @@ object ColorTransparentUtils {
      *
      * @param colorCode color code
      * @param transCode transparent number
-     * @return transparent color code
+     * @return          transparent color code
      */
     fun convertIntoColor(colorCode: Int, transCode: Int): String {
-        // convert color code into hexa string and remove starting 2 digit
+        // convert color code into hex string and remove starting 2 digit
         var color = defaultColor
         try {
             color = Integer.toHexString(colorCode).uppercase(Locale.getDefault()).substring(2)

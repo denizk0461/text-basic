@@ -1,7 +1,6 @@
 package com.denizd.textbasic.util
 
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
 

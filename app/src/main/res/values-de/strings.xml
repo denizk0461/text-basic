@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Text Basic</string>
-    <string name="enter_text">Gib etwas ein...</string>
+    <string name="enter_text">Gib etwas ein…</string>
     <string name="example_text">Dies ist ein Beispieltext</string>
     <string name="text_size">Textgröße</string>
     <string name="opacity">Opazität</string>
@@ -11,7 +11,7 @@
     <string name="random">Zufällige Reihenfolge</string>
     <string name="contrast">Kontrast erhöhen</string>
     <string name="info_add_text">Füg etwas hinzu!</string>
-    <string name="snack_backup_download">Daten werden wiederhergestellt...</string>
+    <string name="snack_backup_download">Daten werden wiederhergestellt…</string>
     <string name="snack_backup_upload">Deine Daten werden innerhalb der nächsten Stunde gesichert</string>
 
     <string name="edit">Text bearbeiten</string>

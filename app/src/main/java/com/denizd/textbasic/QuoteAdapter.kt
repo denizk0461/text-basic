@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 
 class QuoteAdapter(quotes: List<String>) : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
 
     private var mutableQuotes: MutableList<String> = quotes.toMutableList()
 
-    class QuoteViewHolder(view: View) : RecyclerView.ViewHolder(view)/*, View.OnClickListener, View.OnLongClickListener*/ {
+    class QuoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val quote: TextView = view.findViewById(R.id.quote)
         val delete: ImageButton = view.findViewById(R.id.delete_button)
@@ -62,10 +61,5 @@ class QuoteAdapter(quotes: List<String>) : RecyclerView.Adapter<QuoteAdapter.Quo
 
     fun getAllQuotes(): Array<String> {
         return mutableQuotes.filter { s -> s.isNotBlank() }.toTypedArray()
-    }
-
-    interface QuoteClickListener {
-        fun onQuoteClick(quotes: String)
-        fun onQuoteLongClick(quoteId: Int)
     }
 }

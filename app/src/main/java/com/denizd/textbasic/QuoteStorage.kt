@@ -1,11 +1,8 @@
 package com.denizd.textbasic
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
-import android.util.Log
-import androidx.preference.PreferenceManager
 
 class QuoteStorage(context: Context) {
 
@@ -29,17 +26,6 @@ class QuoteStorage(context: Context) {
         private const val KEY_AVG_WIDTH = "avgwidth"
         private const val KEY_AVG_HEIGHT = "avgheight"
         private const val KEY_OUTLINE_SIZE = "outlinesize"
-
-        val prefGroups = arrayOf(
-            KEY_QUOTES, KEY_QUOTE_COUNTER, KEY_TEXT_SIZE, KEY_INVERTED, KEY_HIGH_CONTRAST,
-            KEY_TRANSPARENCY, KEY_RANDOM, KEY_WIDGET_POSITION
-        )
-
-
-//        val transparencyValues = arrayOf(
-//            "0", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50",
-//            "55", "60", "65", "70", "75", "80", "85", "90", "95", "100",
-//        )
     }
 
     private val prefs = context.getSharedPreferences(PREF_NAME, 0)
@@ -65,6 +51,8 @@ class QuoteStorage(context: Context) {
     fun getTextSize() = prefs.getInt(KEY_TEXT_SIZE, 18)
 
     fun isInvertedEnabled(): Boolean = prefs.getBoolean(KEY_INVERTED, false)
+
+    // TODO remove high contrast option once custom colours have been implemented
     fun isHighContrastEnabled(): Boolean = prefs.getBoolean(KEY_HIGH_CONTRAST, false)
     fun getTransparency(): Int = prefs.getInt(KEY_TRANSPARENCY, 100)
     fun isOrderRandom(): Boolean = prefs.getBoolean(KEY_RANDOM, false)

@@ -6,7 +6,6 @@ import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import com.denizd.textbasic.databinding.ActivityMainBinding
 import com.denizd.textbasic.fragment.GuideFragment
@@ -23,11 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(this.layoutInflater)
         setContentView(binding.root)
-
-//        binding.buttonBackupDownload.setOnClickListener {
-//
-//            Snackbar.make(binding.rootLayout, R.string.snack_backup_download, Snackbar.LENGTH_LONG).show()
-//        }
 
         binding.buttonBackupUpload.setOnClickListener {
             BackupManager(this).dataChanged()
