@@ -121,17 +121,6 @@ class CanvasText {
                     }
                     val rounding = 24f
 
-//                    val rect = roundedRect(
-//                        boundsText.left + x - padding,
-//                        boundsText.top + y - padding,
-//                        boundsText.right + x + padding,
-//                        boundsText.bottom + y + padding, rounding, rounding
-//                    )
-
-//                    val rect = roundedRect(
-//                        0f, 0f, boundsText.right.toFloat() / 2, staticLayout.height.toFloat(),
-//                        rounding, rounding
-//                    )
                     val rect = when (widgetGravity) { // right
                         2, 5, 8 -> roundedRect(
                             -boundsText.right.toFloat() - 4f, 0f, 0f, staticLayout.height.toFloat(),
@@ -169,69 +158,67 @@ class CanvasText {
                     val strokeStaticLayout = StaticLayout.Builder
                         .obtain(quote, 0, quote.length, strokePaint, if (isPreview) 1024 else widgetSize.first * 3).build()
                     strokeStaticLayout.draw(canvas)
-//                    canvas.drawText(quote, x, y, strokePaint)
                 }
             }
 
             staticLayout.draw(canvas)
-//            canvas.drawText(quote, x, y, paint)
             return bmp
         }
 
-        private fun calculateWidgetGravity(widgetGravity: Int, bitmap: Bitmap, boundsText: Rect, isPreview: Boolean) : Pair<Float, Float> {
-            return if (isPreview) {
-                Pair((bitmap.width - boundsText.width()) / 2f, (bitmap.height + boundsText.height()) / 2f)
-            } else when (widgetGravity) {
-                0 -> { // top left
-                    Pair(0f + boundsText.left, (boundsText.height() - boundsText.top).toFloat())
-                }
-                1 -> { // top center
-                    Pair(
-                        (bitmap.width - boundsText.width()) / 2f,
-                        (boundsText.height() - boundsText.top).toFloat()
-                    )
-                }
-                2 -> { // top right
-                    Pair(
-                        (bitmap.width - (boundsText.right)).toFloat(),
-                        (boundsText.height() - boundsText.top).toFloat()
-                    )
-                }
-                3 -> { // center left
-                    Pair(0f + boundsText.left, (bitmap.height + boundsText.height()) / 2f)
-                }
-                // 4 == else branch
-                5 -> { // center right
-                    Pair(
-                        (bitmap.width - (boundsText.right)).toFloat(),
-                        (bitmap.height + boundsText.height()) / 2f
-                    )
-                }
-                6 -> { // bottom left
-                    Pair(0f + boundsText.left, (bitmap.height - boundsText.bottom).toFloat())
-                }
-                7 -> { // bottom center
-                    Pair(
-                        (bitmap.width - boundsText.width()) / 2f,
-                        (bitmap.height - boundsText.bottom).toFloat()
-                    )
-                }
-                8 -> { // bottom right
-                    Pair(
-                        (bitmap.width - (boundsText.right)).toFloat(),
-                        (bitmap.height - boundsText.bottom).toFloat()
-                    )
-                }
-                else -> { // center center LIKE 4
-                    Pair(
-                        (bitmap.width - boundsText.width()) / 2f,
-                        (bitmap.height + boundsText.height()) / 2f
-                    )
-                }
-            }
-        }
+//        private fun calculateWidgetGravity(widgetGravity: Int, bitmap: Bitmap, boundsText: Rect, isPreview: Boolean) : Pair<Float, Float> {
+//            return if (isPreview) {
+//                Pair((bitmap.width - boundsText.width()) / 2f, (bitmap.height + boundsText.height()) / 2f)
+//            } else when (widgetGravity) {
+//                0 -> { // top left
+//                    Pair(0f + boundsText.left, (boundsText.height() - boundsText.top).toFloat())
+//                }
+//                1 -> { // top center
+//                    Pair(
+//                        (bitmap.width - boundsText.width()) / 2f,
+//                        (boundsText.height() - boundsText.top).toFloat()
+//                    )
+//                }
+//                2 -> { // top right
+//                    Pair(
+//                        (bitmap.width - (boundsText.right)).toFloat(),
+//                        (boundsText.height() - boundsText.top).toFloat()
+//                    )
+//                }
+//                3 -> { // center left
+//                    Pair(0f + boundsText.left, (bitmap.height + boundsText.height()) / 2f)
+//                }
+//                // 4 == else branch
+//                5 -> { // center right
+//                    Pair(
+//                        (bitmap.width - (boundsText.right)).toFloat(),
+//                        (bitmap.height + boundsText.height()) / 2f
+//                    )
+//                }
+//                6 -> { // bottom left
+//                    Pair(0f + boundsText.left, (bitmap.height - boundsText.bottom).toFloat())
+//                }
+//                7 -> { // bottom center
+//                    Pair(
+//                        (bitmap.width - boundsText.width()) / 2f,
+//                        (bitmap.height - boundsText.bottom).toFloat()
+//                    )
+//                }
+//                8 -> { // bottom right
+//                    Pair(
+//                        (bitmap.width - (boundsText.right)).toFloat(),
+//                        (bitmap.height - boundsText.bottom).toFloat()
+//                    )
+//                }
+//                else -> { // center center LIKE 4
+//                    Pair(
+//                        (bitmap.width - boundsText.width()) / 2f,
+//                        (bitmap.height + boundsText.height()) / 2f
+//                    )
+//                }
+//            }
+//        }
 
-        fun roundedRect(
+        private fun roundedRect(
             left: Float, top: Float, right: Float, bottom: Float,
             roundingX: Float, roundingY: Float
         ): Path {

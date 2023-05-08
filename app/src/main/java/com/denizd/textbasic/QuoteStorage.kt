@@ -72,7 +72,8 @@ class QuoteStorage(context: Context) {
     // Pair<text colour, background colour>
     fun getColours(
         isInverted: Boolean = isInvertedEnabled(),
-        transparency: Int = getBackgroundTransparency(),
+        textTransparency: Int = getTextTransparency(),
+        bgTransparency: Int = getBackgroundTransparency(),
         context: Context
     ): Pair<Int, Int> {
         val colours = when (isInverted) {
@@ -81,8 +82,8 @@ class QuoteStorage(context: Context) {
         }
 
         return Pair(
-            context.getColor(colours.first),//Color.parseColor(ColorTransparentUtils.transparentColor(colours.first, 10)),
-            Color.parseColor(ColorTransparentUtils.transparentColor(context.getColor(colours.second), transparency * 5))
+            Color.parseColor(ColorTransparentUtils.transparentColor(context.getColor(colours.first), textTransparency * 5)),//Color.parseColor(ColorTransparentUtils.transparentColor(colours.first, 10)),
+            Color.parseColor(ColorTransparentUtils.transparentColor(context.getColor(colours.second), bgTransparency * 5))
         )
     }
 
