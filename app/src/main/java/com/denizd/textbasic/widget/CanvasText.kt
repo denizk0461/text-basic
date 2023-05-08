@@ -71,46 +71,44 @@ class CanvasText {
 
             val boundsText = Rect()
             paint.getTextBounds(quote, 0, quote.length, boundsText)
-            val (x, y) = calculateWidgetGravity(storage.getWidgetGravity(), bmp, boundsText, isPreview)
-//            val x = canvas.width / 2
-//            val y = ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2))
 
             val padding = 16f
             val alignment = when (widgetGravity) {
-                0 -> {
+                0 -> { // Align TOP LEFT
                     canvas.translate(boundsText.left.toFloat() + padding, 0f)
                     Paint.Align.LEFT
                 }
-                1 -> {
+                1 -> { // Align TOP CENTER
                     canvas.translate(canvas.width / 2f, 0f)
                     Paint.Align.CENTER
                 }
-                2 -> {
+                2 -> { // Align TOP RIGHT
                     canvas.translate(canvas.width.toFloat() - padding, 0f)
                     Paint.Align.RIGHT
                 }
-                3 -> {
-                    canvas.translate(boundsText.left.toFloat() + padding, 0f)
+                3 -> { // Align CENTER LEFT
+                    canvas.translate(boundsText.left.toFloat() + padding, (bmp.height.toFloat() / 2) - (staticLayout.height / 2))
                     Paint.Align.LEFT
                 }
-                5 -> {
-                    canvas.translate(canvas.width.toFloat() - padding, 0f)
+                // 4 is defined further below
+                5 -> { // Align CENTER RIGHT
+                    canvas.translate(canvas.width.toFloat() - padding, (bmp.height.toFloat() / 2) - (staticLayout.height / 2))
                     Paint.Align.RIGHT
                 }
-                6 -> {
+                6 -> { // Align BOTTOM LEFT
                     canvas.translate(boundsText.left.toFloat() + padding, bmp.height.toFloat() - staticLayout.height - padding)
                     Paint.Align.LEFT
                 }
-                7 -> {
+                7 -> { // Align BOTTOM CENTER
                     canvas.translate(canvas.width / 2f, bmp.height.toFloat() - staticLayout.height - padding)
                     Paint.Align.CENTER
                 }
-                8 -> {
+                8 -> { // Align BOTTOM RIGHT
                     canvas.translate(canvas.width.toFloat() - padding, bmp.height.toFloat() - staticLayout.height - padding)
                     Paint.Align.RIGHT
                 }
-                else -> { // 4
-                    canvas.translate(canvas.width / 2f, 0f)
+                else -> { // 4; Align CENTER
+                    canvas.translate(canvas.width / 2f, (bmp.height.toFloat() / 2) - (staticLayout.height / 2))
                     Paint.Align.CENTER
                 }
             }

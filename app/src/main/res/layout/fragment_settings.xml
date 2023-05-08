@@ -42,13 +42,27 @@
                 <com.denizd.textbasic.VerticalTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/opacity"
+                    android:text="@string/text_opacity"
                     android:textSize="12sp"
                     android:fontFamily="@font/mono_light"
                     android:padding="4dp"/>
 
                 <NumberPicker
-                    android:id="@+id/transparency_picker"
+                    android:id="@+id/text_transparency_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"/>
+
+                <com.denizd.textbasic.VerticalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bg_opacity"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/mono_light"
+                    android:padding="4dp"/>
+
+                <NumberPicker
+                    android:id="@+id/bg_transparency_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"/>
@@ -287,6 +301,7 @@
                         android:id="@+id/text_preview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/widget_preview_content_desc"
                         android:paddingHorizontal="4dp"/>
 
                 </LinearLayout>
@@ -340,6 +355,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_top_left"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_tl"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                             <ImageButton
@@ -348,6 +364,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_top"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_tc"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                             <ImageButton
@@ -356,6 +373,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_top_right"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_tr"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                         </LinearLayout>
@@ -372,6 +390,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_left"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_cl"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                             <ImageButton
@@ -380,6 +399,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/dot"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_cc"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                             <ImageButton
@@ -388,6 +408,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_right"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_cr"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                         </LinearLayout>
@@ -404,6 +425,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_bottom_left"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_bl"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                             <ImageButton
@@ -412,6 +434,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_bottom"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_bc"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                             <ImageButton
@@ -420,6 +443,7 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/arrow_bottom_right"
                                 android:background="@android:color/transparent"
+                                android:contentDescription="@string/position_button_content_desc_br"
                                 android:padding="@dimen/orientation_button_padding"/>
 
                         </LinearLayout>

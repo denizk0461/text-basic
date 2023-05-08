@@ -17,7 +17,8 @@ class QuoteStorage(context: Context) {
         private const val KEY_TEXT_SIZE = "textsize"
         private const val KEY_INVERTED = "inverted"
         private const val KEY_HIGH_CONTRAST = "hicontrast"
-        private const val KEY_TRANSPARENCY = "transparency"
+        private const val KEY_TEXT_TRANSPARENCY = "transparency_text"
+        private const val KEY_BG_TRANSPARENCY = "transparency"
         private const val KEY_RANDOM = "random"
         private const val KEY_WIDGET_POSITION = "widgetposition"
         private const val KEY_BACKGROUND_TYPE = "backgroundtype"
@@ -51,10 +52,8 @@ class QuoteStorage(context: Context) {
     fun getTextSize() = prefs.getInt(KEY_TEXT_SIZE, 18)
 
     fun isInvertedEnabled(): Boolean = prefs.getBoolean(KEY_INVERTED, false)
-
-    // TODO remove high contrast option once custom colours have been implemented
-    fun isHighContrastEnabled(): Boolean = prefs.getBoolean(KEY_HIGH_CONTRAST, false)
-    fun getTransparency(): Int = prefs.getInt(KEY_TRANSPARENCY, 100)
+    fun getTextTransparency(): Int = prefs.getInt(KEY_TEXT_TRANSPARENCY, 100)
+    fun getBackgroundTransparency(): Int = prefs.getInt(KEY_BG_TRANSPARENCY, 100)
     fun isOrderRandom(): Boolean = prefs.getBoolean(KEY_RANDOM, false)
     fun getWidgetGravity(): Int = prefs.getInt(KEY_WIDGET_POSITION, 1)
     fun getBackgroundType(): Int = prefs.getInt(KEY_BACKGROUND_TYPE, 0)
@@ -73,7 +72,7 @@ class QuoteStorage(context: Context) {
     // Pair<text colour, background colour>
     fun getColours(
         isInverted: Boolean = isInvertedEnabled(),
-        transparency: Int = getTransparency(),
+        transparency: Int = getBackgroundTransparency(),
         context: Context
     ): Pair<Int, Int> {
         val colours = when (isInverted) {
@@ -97,14 +96,22 @@ class QuoteStorage(context: Context) {
     fun getSize(): Pair<Int, Int> = Pair(prefs.getInt(KEY_AVG_WIDTH, 1), prefs.getInt(KEY_AVG_HEIGHT, 1))
 
     fun saveSettings(
-        textSize: Int, inverted: Boolean, transparency: Int, random: Boolean,
-        widgetPosition: Int, backgroundType: Int, typefaceIndex: Int, typefaceStyleIndex: Int,
+        textSize: Int,
+        inverted: Boolean,
+        textTransparency: Int,
+        bgTransparency: Int,
+        random: Boolean,
+        widgetPosition: Int,
+        backgroundType: Int,
+        typefaceIndex: Int,
+        typefaceStyleIndex: Int,
         outlineSize: Float
     ) {
         prefs.edit().apply {
             putInt(KEY_TEXT_SIZE, textSize)
             putBoolean(KEY_INVERTED, inverted)
-            putInt(KEY_TRANSPARENCY, transparency)
+            putInt(KEY_TEXT_TRANSPARENCY, textTransparency)
+            putInt(KEY_BG_TRANSPARENCY, bgTransparency)
             putBoolean(KEY_RANDOM, random)
             putInt(KEY_WIDGET_POSITION, widgetPosition)
             putInt(KEY_BACKGROUND_TYPE, backgroundType)
