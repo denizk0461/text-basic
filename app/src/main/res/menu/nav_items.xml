@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/quotes"
+        android:icon="@drawable/pen_outlined"
+        android:title="@string/edit"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/guide"
+        android:icon="@drawable/book_outlined"
+        android:title="@string/guide"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings_outlined"
+        android:title="@string/settings"
+        android:enabled="true"/>
+</menu>

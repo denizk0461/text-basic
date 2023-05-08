@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Text Basic</string>
+    <string name="enter_text">Enter something...</string>
+    <string name="example_text">This is an example text</string>
+    <string name="text_size">text size</string>
+    <string name="opacity">opacity</string>
+    <string name="thickness">thickness</string>
+    <string name="intensity">intensity</string>
+    <string name="invert">Invert colours</string>
+    <string name="random">Randomise order</string>
+    <string name="contrast">Increase the contrast</string>
+    <string name="info_add_text">add some text!</string>
+    <string name="snack_backup_download">Restoring your data...</string>
+    <string name="snack_backup_upload">Your data will be backed up within the next hour</string>
+
+    <string name="edit">Edit Text</string>
+    <string name="guide">Guide</string>
+    <string name="settings">Settings</string>
+
+    <string name="position">position</string>
+
+    <string name="sansserif">Sans-Serif</string>
+    <string name="serif">Serif</string>
+    <string name="monospace">Monospace</string>
+
+    <string name="background">Background</string>
+    <string name="outline">Outline</string>
+    <string name="shadow">Shadow</string>
+
+    <string name="normal">Normal</string>
+    <string name="bold">Bold</string>
+    <string name="italics">Italics</string>
+    <string name="bold_italics">Bold &amp; Italics</string>
+
+    <string name="guide1"><i>Text Basic</i> is a simple app for displaying a text on your home screen! Just add the <i>Text Basic</i> widget to your home screen, enter text in the app, and it will show on your home screen.
+\n\n<b>Cycle through texts:</b> In the app, you can enter as many texts as you like by clicking the [+] button and entering your text into the newly appeared field. All texts are saved automatically, you have to take no further action.\nYou can cycle through your texts by clicking on the widget on your home screen. They will be shown in the order you added them in, but you can turn on "random order" in the app\'s settings to randomise the order.
+\nNOTE: if clicking on the widget does not cycle between texts, please try changing the size of the widget and then change it back. This should solve the issue.
+\n\n<b>Customise the look:</b> You can change how your text will look by heading into the app\'s settings – there, you can edit the text appearance by changing the size, font, position, apply formatting options, and even add a background, an outline, or a shadow.
+\nTip: if the text is hard to read on your wallpaper, try inverting the colours.</string>
+
+    <string-array name="typefaces">
+        <item>Sans-Serif</item>
+        <item>Serif</item>
+        <item>Monospace</item>
+    </string-array>
+</resources>
