@@ -106,7 +106,7 @@ class QuoteStorage(context: Context) {
         backgroundType: Int,
         typefaceIndex: Int,
         typefaceStyleIndex: Int,
-        outlineSize: Float
+        outlineSize: Float,
     ) {
         prefs.edit().apply {
             putInt(KEY_TEXT_SIZE, textSize)

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <attr name="colorOnPrimarySoftest" format="color"/>-->
-<!--    <attr name="colorOnSecondarySoft" format="color"/>-->
-<!--    <attr name="colorTertiary" format="color"/>-->
     <attr name="colorTintBackground" format="color"/>
     <attr name="colorSecContainer" format="color"/>
+    <attr name="colorText" format="color"/>
 </resources>

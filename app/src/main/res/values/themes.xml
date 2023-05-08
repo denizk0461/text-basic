@@ -36,5 +36,11 @@
         <item name="android:navigationBarColor">@color/color_tint_background_light</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="p">true</item>
+
+        <item name="android:textColor">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="android:textColorHighlight">@color/md_theme_light_primaryContainer</item>
+        <item name="colorText">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="android:scrollbarThumbVertical">@color/md_theme_light_primary</item>
+        <item name="colorOutlineVariant">@color/md_theme_light_outlineVariant</item>
     </style>
 </resources>

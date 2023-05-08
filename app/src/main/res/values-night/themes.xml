@@ -34,5 +34,11 @@
 
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
         <item name="android:navigationBarColor">@color/color_tint_background_dark</item>
+
+        <item name="android:textColor">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="android:textColorHighlight">@color/md_theme_dark_primaryContainer</item>
+        <item name="colorText">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="android:scrollbarThumbVertical">@color/md_theme_dark_primary</item>
+        <item name="colorOutlineVariant">@color/md_theme_dark_outlineVariant</item>
     </style>
 </resources>

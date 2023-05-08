@@ -17,6 +17,7 @@ import com.google.android.material.transition.MaterialSharedAxis
 import java.lang.reflect.Field
 import kotlin.math.abs
 
+
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     private lateinit var storage: QuoteStorage
@@ -43,6 +44,8 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         super.onViewCreated(view, savedInstanceState)
 
 //        binding.animationLl.animateLayoutChanges(true)
+
+        // TODO a lot of the buttons don't at all do what they're supposed to do!
 
         storage = QuoteStorage(context)
 
@@ -123,6 +126,8 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 updatePreview()
             }
         }
+
+        ////////////////////////////////////////////
 
         binding.switchInvert.apply {
             isChecked = storage.isInvertedEnabled()
@@ -260,16 +265,16 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     private fun save() {
         storage.saveSettings(
-            binding.textSizePicker.value,
-            binding.switchInvert.isChecked,
-            binding.textTransparencyPicker.value,
-            binding.bgTransparencyPicker.value,
-            binding.switchRandom.isChecked,
-            widgetGravity,
-            backgroundIndex,
-            typefaceIndex,
-            typefaceStyleIndex,
-            binding.outlinePicker.value.toFloat()
+            textSize = binding.textSizePicker.value,
+            inverted = binding.switchInvert.isChecked,
+            textTransparency = binding.textTransparencyPicker.value,
+            bgTransparency = binding.bgTransparencyPicker.value,
+            random = binding.switchRandom.isChecked,
+            widgetPosition = widgetGravity,
+            backgroundType = backgroundIndex,
+            typefaceIndex = typefaceIndex,
+            typefaceStyleIndex = typefaceStyleIndex,
+            outlineSize = binding.outlinePicker.value.toFloat()
         )
     }
 

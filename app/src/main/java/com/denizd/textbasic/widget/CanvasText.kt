@@ -27,7 +27,6 @@ class CanvasText {
             val bmp = if (isPreview) {
                 Bitmap.createBitmap(1024, 256, Bitmap.Config.ARGB_8888)
             } else {
-//                Log.d("ASDFasdf", "${widgetSize.first} + ${widgetSize.second}")
                 Bitmap.createBitmap(widgetSize.first * 3, widgetSize.second * 3, Bitmap.Config.ARGB_8888)
             }
 

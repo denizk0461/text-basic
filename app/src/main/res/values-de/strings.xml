@@ -32,6 +32,9 @@
     <string name="position_button_content_desc_bc">Positioniere Widget unten zentriert</string>
     <string name="position_button_content_desc_br">Positioniere Widget unten rechts</string>
 
+    <string name="text_colour_input_hint">Textfarbe (hex, ohne #)</string>
+    <string name="bg_colour_input_hint">Hintergrundfarbe (hex, ohne #)</string>
+
     <string name="sansserif">Sans-Serif</string>
     <string name="serif">Serif</string>
     <string name="monospace">Monospace</string>

@@ -31,6 +31,9 @@
     <string name="position_button_content_desc_bc">Position widget at bottom center</string>
     <string name="position_button_content_desc_br">Position widget at bottom right</string>
 
+    <string name="text_colour_input_hint">Text colour (hex, no #)</string>
+    <string name="bg_colour_input_hint">Background colour (hex, no #)</string>
+
     <string name="sansserif">Sans-Serif</string>
     <string name="serif">Serif</string>
     <string name="monospace">Monospace</string>
