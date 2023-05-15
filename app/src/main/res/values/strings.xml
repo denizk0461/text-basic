@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Text Basic</string>
     <string name="enter_text">Enter something…</string>
-    <string name="example_text">This is an example text</string>
+    <string name="quote_entry_text_input_hint">Entry</string>
+    <string name="example_text">Sample text</string>
     <string name="text_size">text size</string>
     <string name="text_opacity">text opacity</string>
     <string name="bg_opacity">bg opacity</string>
@@ -14,7 +15,13 @@
     <string name="snack_backup_download">Restoring your data…</string>
     <string name="snack_backup_upload">Your data will be backed up within the next hour</string>
 
+    <string name="quote_fragment_title">Your Entries</string>
+    <string name="quote_fragment_fab_add">Add entry</string>
+    <string name="quote_fragment_snack_text">Entry has been deleted</string>
+    <string name="quote_fragment_snack_undo">Undo</string>
+
     <string name="edit">Edit Text</string>
+    <string name="nav_items_entries">Entries</string>
     <string name="guide">Guide</string>
     <string name="settings">Settings</string>
 

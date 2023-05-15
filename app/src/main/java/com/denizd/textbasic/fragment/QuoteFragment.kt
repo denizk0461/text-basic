@@ -1,6 +1,5 @@
 package com.denizd.textbasic.fragment
 
-import android.animation.LayoutTransition
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -11,40 +10,40 @@ import com.denizd.textbasic.util.viewBinding
 import com.denizd.textbasic.R
 import com.denizd.textbasic.adapter.RecyclerRowMoveCallback
 import com.denizd.textbasic.databinding.FragmentQuoteBinding
-import com.google.android.material.transition.MaterialSharedAxis
+import com.denizd.textbasic.util.showSnackBar
 
-class QuoteFragment : BaseFragment(R.layout.fragment_quote) {
+class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDeleteListener {
 
     private lateinit var storage: QuoteStorage
     private lateinit var quoteAdapter: QuoteAdapter
 
     private val binding: FragmentQuoteBinding by viewBinding(FragmentQuoteBinding::bind)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
-        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
-
-        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
-        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.quoteConstraintLayout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
-
         storage = QuoteStorage(context)
-        quoteAdapter = QuoteAdapter(storage.getAllQuotes())
+        quoteAdapter = QuoteAdapter(storage.getAllQuotes(), this)
 
-        binding.quoteScroller.let { s ->
-            s.layoutManager = LinearLayoutManager(context)
-            ItemTouchHelper(RecyclerRowMoveCallback(quoteAdapter)).attachToRecyclerView(s)
-            s.adapter = quoteAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        ItemTouchHelper(RecyclerRowMoveCallback(quoteAdapter))
+            .attachToRecyclerView(binding.recyclerView)
+        binding.recyclerView.adapter = quoteAdapter
+
+        // Set up scroll change listener to shrink and extend FAB accordingly
+        binding.recyclerView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+            // Calculate the vertical scroll difference
+            val dy = scrollY - oldScrollY
+            if (dy > 0) {
+                // If scrolling down, shrink the FAB
+                binding.fabAddQuote.shrink()
+            } else if (dy < 0) {
+                // If scrolling up, extend the FAB
+                binding.fabAddQuote.extend()
+            }
         }
 
-        binding.addFab.setOnClickListener {
+        binding.fabAddQuote.setOnClickListener {
             quoteAdapter.addNewQuote()
         }
     }
@@ -56,5 +55,16 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote) {
     override fun onPause() {
         save()
         super.onPause()
+    }
+
+    override fun onDelete(entry: String, index: Int) {
+        context.theme.showSnackBar(
+            binding.coordinatorLayout,
+            getString(R.string.quote_fragment_snack_text),
+            null,
+            getString(R.string.quote_fragment_snack_undo),
+        ) {
+            quoteAdapter.addEntryAt(index, entry)
+        }
     }
 }

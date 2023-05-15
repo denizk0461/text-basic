@@ -5,14 +5,15 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.denizd.textbasic.R
+import com.google.android.material.button.MaterialButton
 import java.util.Collections
 
 class QuoteAdapter(
     quotes: List<String>,
+    private val onDeleteListener: OnDeleteListener,
 ) : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>(),
     RecyclerRowMoveCallback.RecyclerViewTouchHelperContract {
 
@@ -20,8 +21,8 @@ class QuoteAdapter(
 
     class QuoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val quote: TextView = view.findViewById(R.id.quote)
-        val delete: ImageButton = view.findViewById(R.id.delete_button)
+        val quote: TextView = view.findViewById(R.id.edit_text_quote)
+        val delete: MaterialButton = view.findViewById(R.id.delete_button)
     }
 
 //    override fun getItemViewType(position: Int): Int {
@@ -47,6 +48,7 @@ class QuoteAdapter(
         })
 
         holder.delete.setOnClickListener {
+            onDeleteListener.onDelete(mutableQuotes[holder.layoutPosition], holder.layoutPosition)
             mutableQuotes.removeAt(holder.layoutPosition)
             notifyItemRemoved(holder.layoutPosition)
         }
@@ -57,6 +59,11 @@ class QuoteAdapter(
     fun addNewQuote() {
         mutableQuotes.add("")
         notifyItemInserted(mutableQuotes.size + 1)
+    }
+
+    fun addEntryAt(index: Int, entry: String) {
+        mutableQuotes.add(index, entry)
+        notifyItemInserted(index)
     }
 
     fun getAllQuotes(): Array<String> {
@@ -79,5 +86,9 @@ class QuoteAdapter(
 
     override fun onRowClear(viewHolder: QuoteViewHolder) {
         // TODO
+    }
+
+    interface OnDeleteListener {
+        fun onDelete(entry: String, index: Int)
     }
 }

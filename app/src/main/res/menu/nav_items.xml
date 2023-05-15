@@ -3,7 +3,7 @@
     <item
         android:id="@+id/quotes"
         android:icon="@drawable/pen_outlined"
-        android:title="@string/edit"
+        android:title="@string/nav_items_entries"
         android:enabled="true"/>
     <item
         android:id="@+id/guide"
