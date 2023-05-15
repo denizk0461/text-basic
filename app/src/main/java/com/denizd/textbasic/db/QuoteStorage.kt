@@ -5,10 +5,22 @@ import android.graphics.Color
 import android.graphics.Typeface
 import com.denizd.textbasic.util.ColorTransparentUtils
 import com.denizd.textbasic.R
+import com.denizd.textbasic.util.SettingsPreference
 
-class QuoteStorage(context: Context) {
+class QuoteStorage private constructor(context: Context) {
 
     companion object {
+
+        private lateinit var storage: QuoteStorage
+
+        fun getInstance(context: Context): QuoteStorage {
+            if (!::storage.isInitialized) {
+                synchronized(Object::class.java) {
+                    storage = QuoteStorage(context)
+                }
+            }
+            return storage
+        }
 
         const val PREF_NAME = "textbasicprefs"
         const val PREF_BACKUP_KEY = "textbasicprefskey"
@@ -16,11 +28,11 @@ class QuoteStorage(context: Context) {
 
         private const val KEY_QUOTES = "quotes"
         private const val KEY_QUOTE_COUNTER = "quotecounter"
-        private const val KEY_TEXT_SIZE = "textsize"
+        const val KEY_TEXT_SIZE = "textsize"
         private const val KEY_INVERTED = "inverted"
         private const val KEY_HIGH_CONTRAST = "hicontrast"
-        private const val KEY_TEXT_TRANSPARENCY = "transparency_text"
-        private const val KEY_BG_TRANSPARENCY = "transparency"
+        const val KEY_TEXT_TRANSPARENCY = "transparency_text"
+        const val KEY_BG_TRANSPARENCY = "transparency"
         private const val KEY_RANDOM = "random"
         private const val KEY_WIDGET_POSITION = "widgetposition"
         private const val KEY_BACKGROUND_TYPE = "backgroundtype"
@@ -52,13 +64,43 @@ class QuoteStorage(context: Context) {
     }
 
     fun getTextSize() = prefs.getInt(KEY_TEXT_SIZE, 18)
+    fun setTextSize(newValue: Int) {
+        prefs.edit().putInt(KEY_TEXT_SIZE, newValue).apply()
+    }
+
+    fun getInt(
+        pref: SettingsPreference,
+        defaultValue: Int = 0,
+    ): Int = prefs.getInt(pref.key, defaultValue)
+    fun setInt(
+        pref: SettingsPreference,
+        newValue: Int,
+    ) {
+        prefs.edit().putInt(pref.key, newValue).apply()
+    }
 
     fun isInvertedEnabled(): Boolean = prefs.getBoolean(KEY_INVERTED, false)
     fun getTextTransparency(): Int = prefs.getInt(KEY_TEXT_TRANSPARENCY, 100)
+    fun setTextTransparency(newValue: Int) {
+        prefs.edit().putInt(KEY_TEXT_TRANSPARENCY, newValue).apply()
+    }
     fun getBackgroundTransparency(): Int = prefs.getInt(KEY_BG_TRANSPARENCY, 100)
+    fun setBackgroundTransparency(newValue: Int) {
+        prefs.edit().putInt(KEY_BG_TRANSPARENCY, newValue).apply()
+    }
     fun isOrderRandom(): Boolean = prefs.getBoolean(KEY_RANDOM, false)
+    fun setIsOrderRandom(newValue: Boolean) {
+        prefs.edit().putBoolean(KEY_RANDOM, newValue).apply()
+    }
+
     fun getWidgetGravity(): Int = prefs.getInt(KEY_WIDGET_POSITION, 1)
-    fun getBackgroundType(): Int = prefs.getInt(KEY_BACKGROUND_TYPE, 0)
+    fun setWidgetGravity(newValue: Int) {
+        prefs.edit().putInt(KEY_WIDGET_POSITION, newValue).apply()
+    }
+    fun getBackgroundType(): Int = prefs.getInt(KEY_BACKGROUND_TYPE, 3) // default none
+    fun setBackgroundType(newValue: Int) {
+        prefs.edit().putInt(KEY_BACKGROUND_TYPE, newValue).apply()
+    }
     fun getTypefaceIndex(): Int = prefs.getInt(KEY_TYPEFACE, 0)
     fun getTypeface(): Typeface = Typeface.create(
         when (getTypefaceIndex()) {
@@ -69,6 +111,9 @@ class QuoteStorage(context: Context) {
         getTypefaceStyle()
     )
     fun getTypefaceStyle(): Int = prefs.getInt(KEY_TYPEFACE_STYLE, 0)
+    fun setTypefaceStyle(newValue: Int) {
+        prefs.edit().putInt(KEY_TYPEFACE_STYLE, newValue).apply()
+    }
     fun getOutlineSize(): Float = prefs.getFloat(KEY_OUTLINE_SIZE, 8f)
 
     // Pair<text colour, background colour>

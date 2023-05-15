@@ -47,7 +47,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
         // TODO a lot of the buttons don't at all do what they're supposed to do!
 
-        storage = QuoteStorage(context)
+        storage = QuoteStorage.getInstance(context)
 
         gravityButtons = arrayOf(
             binding.buttonTopLeft, binding.buttonTopMiddle, binding.buttonTopRight,

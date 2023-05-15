@@ -22,7 +22,7 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDele
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        storage = QuoteStorage(context)
+        storage = QuoteStorage.getInstance(context)
         quoteAdapter = QuoteAdapter(storage.getAllQuotes(), this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)

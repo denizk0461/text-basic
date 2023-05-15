@@ -46,11 +46,14 @@
     <string name="settings_highlight_transparency_header">Highlight-Transparenz</string>
 
     <string name="settings_widget_header">Widget</string>
-    <string name="settings_widget_order_title">Stelle Reihenfolge ein</string>
-    <string name="settings_widget_order_subtitle">Dies ist die Reihenfolge, in welcher deine Einträge angezeigt werden, wenn du auf das Widget klickst</string>
+    <string name="settings_widget_order_title">Nutze zufällige Reihenfolge</string>
+    <string name="settings_widget_order_subtitle">Sonst wird die Reihenfolge der Liste genutzt; ändere sie durch D rag &amp; Drop</string>
     <string name="settings_widget_order_default">Standard</string>
     <string name="settings_widget_order_random">Zufall</string>
     <string name="settings_widget_position_title">Setze Position des Texts</string>
+
+    <string name="settings_misc_header">Sonstiges</string>
+    <string name="settings_misc_app_version">App-Version</string>
 
     <string name="edit">Text bearbeiten</string>
     <string name="nav_items_entries">Einträge</string>

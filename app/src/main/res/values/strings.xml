@@ -45,11 +45,14 @@
     <string name="settings_highlight_transparency_header">Transparency</string>
 
     <string name="settings_widget_header">Widget</string>
-    <string name="settings_widget_order_title">Set entry order</string>
-    <string name="settings_widget_order_subtitle">This is the order in which your entries will be shown when you click on the widget</string>
+    <string name="settings_widget_order_title">Randomise entry order</string>
+    <string name="settings_widget_order_subtitle">Order from the list is preserved otherwise; change by drag-and-drop</string>
     <string name="settings_widget_order_default">Default</string>
     <string name="settings_widget_order_random">Random</string>
     <string name="settings_widget_position_title">Set position of the text</string>
+
+    <string name="settings_misc_header">Miscellaneous</string>
+    <string name="settings_misc_app_version">App Version</string>
 
     <string name="edit">Edit Text</string>
     <string name="nav_items_entries">Entries</string>

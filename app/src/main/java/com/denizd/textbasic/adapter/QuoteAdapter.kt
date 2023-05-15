@@ -11,6 +11,7 @@ import com.denizd.textbasic.R
 import com.google.android.material.button.MaterialButton
 import java.util.Collections
 
+
 class QuoteAdapter(
     quotes: List<String>,
     private val onDeleteListener: OnDeleteListener,
@@ -73,7 +74,7 @@ class QuoteAdapter(
     override fun onRowMoved(from: Int, to: Int) {
         if (from < to) for (i in from until to) {
             Collections.swap(mutableQuotes, i, i + 1)
-        } else for (i in to downTo from - 1) {
+        } else for (i in from downTo to + 1) {
             Collections.swap(mutableQuotes, i, i - 1)
         }
 

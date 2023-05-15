@@ -15,7 +15,7 @@ class CanvasText {
 
             val previewSize = 20f
 
-            val storage = QuoteStorage(context)
+            val storage = QuoteStorage.getInstance(context)
 
             size?.let {
                 storage.setSize(size)
