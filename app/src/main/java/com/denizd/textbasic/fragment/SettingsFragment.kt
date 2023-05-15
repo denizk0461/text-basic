@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.ColorInt
-import com.denizd.textbasic.ColorTransparentUtils
-import com.denizd.textbasic.QuoteStorage
+import com.denizd.textbasic.util.ColorTransparentUtils
+import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.R
 import com.denizd.textbasic.databinding.FragmentSettingsBinding
 import com.denizd.textbasic.util.viewBinding
@@ -248,7 +248,8 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         }
 
         binding.textPreviewBackgroundDark.setBackgroundColor(
-            Color.parseColor(ColorTransparentUtils.transparentColor(
+            Color.parseColor(
+                ColorTransparentUtils.transparentColor(
                 context.getColor(R.color.md_theme_dark_background),
                 if (storage.isInvertedEnabled()) {
                     abs((storage.getBackgroundTransparency() * 5))

@@ -1,4 +1,4 @@
-package com.denizd.textbasic
+package com.denizd.textbasic.adapter
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,8 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.denizd.textbasic.R
+import java.util.Collections
 
-class QuoteAdapter(quotes: List<String>) : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
+class QuoteAdapter(
+    quotes: List<String>,
+) : RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>(),
+    RecyclerRowMoveCallback.RecyclerViewTouchHelperContract {
 
     private var mutableQuotes: MutableList<String> = quotes.toMutableList()
 
@@ -19,9 +24,9 @@ class QuoteAdapter(quotes: List<String>) : RecyclerView.Adapter<QuoteAdapter.Quo
         val delete: ImageButton = view.findViewById(R.id.delete_button)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return /*if (position == itemCount - 1) 1 else*/ 0
-    }
+//    override fun getItemViewType(position: Int): Int {
+//        return /*if (position == itemCount - 1) 1 else*/ 0
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteViewHolder {
             val v = LayoutInflater.from(parent.context).inflate(R.layout.quote_entry, parent, false)
@@ -49,11 +54,6 @@ class QuoteAdapter(quotes: List<String>) : RecyclerView.Adapter<QuoteAdapter.Quo
 
     override fun getItemCount(): Int = mutableQuotes.size
 
-    fun setQuotes(quotes: List<String>) {
-        this.mutableQuotes = quotes.toMutableList()
-        notifyDataSetChanged()
-    }
-
     fun addNewQuote() {
         mutableQuotes.add("")
         notifyItemInserted(mutableQuotes.size + 1)
@@ -61,5 +61,23 @@ class QuoteAdapter(quotes: List<String>) : RecyclerView.Adapter<QuoteAdapter.Quo
 
     fun getAllQuotes(): Array<String> {
         return mutableQuotes.filter { s -> s.isNotBlank() }.toTypedArray()
+    }
+
+    override fun onRowMoved(from: Int, to: Int) {
+        if (from < to) for (i in from until to) {
+            Collections.swap(mutableQuotes, i, i + 1)
+        } else for (i in to downTo from - 1) {
+            Collections.swap(mutableQuotes, i, i - 1)
+        }
+
+        notifyItemMoved(from, to)
+    }
+
+    override fun onRowSelected(viewHolder: QuoteViewHolder) {
+        // TODO
+    }
+
+    override fun onRowClear(viewHolder: QuoteViewHolder) {
+        // TODO
     }
 }

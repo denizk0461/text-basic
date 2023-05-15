@@ -1,4 +1,4 @@
-package com.denizd.textbasic
+package com.denizd.textbasic.activity
 
 import android.app.backup.BackupManager
 import android.appwidget.AppWidgetManager
@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
+import com.denizd.textbasic.R
 import com.denizd.textbasic.databinding.ActivityMainBinding
 import com.denizd.textbasic.fragment.GuideFragment
 import com.denizd.textbasic.fragment.QuoteFragment

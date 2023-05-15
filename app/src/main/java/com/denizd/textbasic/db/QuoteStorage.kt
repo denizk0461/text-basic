@@ -1,8 +1,10 @@
-package com.denizd.textbasic
+package com.denizd.textbasic.db
 
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
+import com.denizd.textbasic.util.ColorTransparentUtils
+import com.denizd.textbasic.R
 
 class QuoteStorage(context: Context) {
 
@@ -82,8 +84,18 @@ class QuoteStorage(context: Context) {
         }
 
         return Pair(
-            Color.parseColor(ColorTransparentUtils.transparentColor(context.getColor(colours.first), textTransparency * 5)),//Color.parseColor(ColorTransparentUtils.transparentColor(colours.first, 10)),
-            Color.parseColor(ColorTransparentUtils.transparentColor(context.getColor(colours.second), bgTransparency * 5))
+            Color.parseColor(
+                ColorTransparentUtils.transparentColor(
+                    context.getColor(colours.first),
+                    textTransparency * 5
+                )
+            ),//Color.parseColor(ColorTransparentUtils.transparentColor(colours.first, 10)),
+            Color.parseColor(
+                ColorTransparentUtils.transparentColor(
+                    context.getColor(colours.second),
+                    bgTransparency * 5
+                )
+            )
         )
     }
 

@@ -1,4 +1,4 @@
-package com.denizd.textbasic
+package com.denizd.textbasic.util
 
 import java.util.*
 import kotlin.math.roundToInt
@@ -14,7 +14,7 @@ object ColorTransparentUtils {
     /**
      * This method convert number into hex number or we can say transparent code
      *
-     * @param trans number of transparency you want
+     * @param trans number of transparency you want 🏳️‍⚧️
      * @return      hex decimal number or transparency code
      */
     fun convert(trans: Int): String {

@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.text.StaticLayout
 import android.text.TextPaint
-import com.denizd.textbasic.QuoteStorage
+import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.R
 
 class CanvasText {

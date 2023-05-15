@@ -1,4 +1,4 @@
-package com.denizd.textbasic
+package com.denizd.textbasic.view
 
 import android.content.Context
 import android.graphics.Canvas

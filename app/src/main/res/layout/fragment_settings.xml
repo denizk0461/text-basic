@@ -25,7 +25,7 @@
                 android:gravity="center"
                 android:animateLayoutChanges="true">
 
-                <com.denizd.textbasic.VerticalTextView
+                <com.denizd.textbasic.view.VerticalTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/text_size"
@@ -40,7 +40,7 @@
                     android:layout_marginHorizontal="4dp"/>
 
                 <!-- TODO the following 4 elements are hidden but must be removed once their features are implemented custom -->
-                <com.denizd.textbasic.VerticalTextView
+                <com.denizd.textbasic.view.VerticalTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/text_opacity"
@@ -56,7 +56,7 @@
                     android:visibility="gone"
                     android:layout_marginHorizontal="4dp"/>
 
-                <com.denizd.textbasic.VerticalTextView
+                <com.denizd.textbasic.view.VerticalTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bg_opacity"
@@ -72,7 +72,7 @@
                     android:visibility="gone"
                     android:layout_marginHorizontal="4dp"/>
 
-                <com.denizd.textbasic.VerticalTextView
+                <com.denizd.textbasic.view.VerticalTextView
                     android:id="@+id/outline_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -396,7 +396,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.denizd.textbasic.VerticalTextView
+                <com.denizd.textbasic.view.VerticalTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/position"
