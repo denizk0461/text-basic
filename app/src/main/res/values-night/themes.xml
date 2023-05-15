@@ -41,4 +41,8 @@
         <item name="android:scrollbarThumbVertical">@color/md_theme_dark_primary</item>
         <item name="colorOutlineVariant">@color/md_theme_dark_outlineVariant</item>
     </style>
+
+    <style name="DividerTheme" parent="Widget.Material3.MaterialDivider">
+        <item name="dividerColor">@color/md_theme_dark_outlineVariant</item>
+    </style>
 </resources>

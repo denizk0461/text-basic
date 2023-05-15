@@ -21,6 +21,37 @@
     <string name="quote_fragment_snack_text">Eintrag wurde gelöscht</string>
     <string name="quote_fragment_snack_undo">Rückgängig</string>
 
+    <string name="guide_fragment_title">Anleitung</string>
+
+    <string name="settings_fragment_title">Einstellungen</string>
+
+    <string name="settings_text_header">Textstil</string>
+    <string name="settings_text_font_header">Textschrift</string>
+    <string name="settings_text_font_hint">Schrift</string>
+    <string name="settings_text_style_header">Schriftstil</string>
+    <string name="settings_text_style_button_default">Standard</string>
+    <string name="settings_text_style_button_bold">Fett</string>
+    <string name="settings_text_style_button_italic">Kursiv</string>
+    <string name="settings_text_style_button_bolditalic">Fett &amp; Kursiv</string>
+    <string name="settings_text_size_header">Textgröße</string>
+    <string name="settings_text_transparency_header">Texttransparenz</string>
+
+    <string name="settings_highlight_header">Highlight-Stil</string>
+    <string name="settings_highlight_style_header">Stil</string>
+    <string name="settings_highlight_style_button_none">Keiner</string>
+    <string name="settings_highlight_style_button_background">Hintergrund</string>
+    <string name="settings_highlight_style_button_stroke">Umrandet</string>
+    <string name="settings_highlight_style_button_shadow">Schatten</string>
+    <string name="settings_highlight_intensity_header">Stärke</string>
+    <string name="settings_highlight_transparency_header">Highlight-Transparenz</string>
+
+    <string name="settings_widget_header">Widget</string>
+    <string name="settings_widget_order_title">Stelle Reihenfolge ein</string>
+    <string name="settings_widget_order_subtitle">Dies ist die Reihenfolge, in welcher deine Einträge angezeigt werden, wenn du auf das Widget klickst</string>
+    <string name="settings_widget_order_default">Standard</string>
+    <string name="settings_widget_order_random">Zufall</string>
+    <string name="settings_widget_position_title">Setze Position des Texts</string>
+
     <string name="edit">Text bearbeiten</string>
     <string name="nav_items_entries">Einträge</string>
     <string name="guide">Anleitung</string>
@@ -29,15 +60,15 @@
     <string name="position">Position</string>
 
     <string name="widget_preview_content_desc">Vorschau für das Widget</string>
-    <string name="position_button_content_desc_tl">Positioniere Widget oben links</string>
-    <string name="position_button_content_desc_tc">Positioniere Widget oben zentriert</string>
-    <string name="position_button_content_desc_tr">Positioniere Widget oben rechts</string>
-    <string name="position_button_content_desc_cl">Positioniere Widget zentriert links</string>
-    <string name="position_button_content_desc_cc">Positioniere Widget zentriert</string>
-    <string name="position_button_content_desc_cr">Positioniere Widget zentriert rechts</string>
-    <string name="position_button_content_desc_bl">Positioniere Widget unten links</string>
-    <string name="position_button_content_desc_bc">Positioniere Widget unten zentriert</string>
-    <string name="position_button_content_desc_br">Positioniere Widget unten rechts</string>
+    <string name="position_button_content_desc_tl">Positioniere Text oben links</string>
+    <string name="position_button_content_desc_tc">Positioniere Text oben zentriert</string>
+    <string name="position_button_content_desc_tr">Positioniere Text oben rechts</string>
+    <string name="position_button_content_desc_cl">Positioniere Text zentriert links</string>
+    <string name="position_button_content_desc_cc">Positioniere Text zentriert</string>
+    <string name="position_button_content_desc_cr">Positioniere Text zentriert rechts</string>
+    <string name="position_button_content_desc_bl">Positioniere Text unten links</string>
+    <string name="position_button_content_desc_bc">Positioniere Text unten zentriert</string>
+    <string name="position_button_content_desc_br">Positioniere Text unten rechts</string>
 
     <string name="text_colour_input_hint">Textfarbe (hex, ohne #)</string>
     <string name="bg_colour_input_hint">Hintergrundfarbe (hex, ohne #)</string>

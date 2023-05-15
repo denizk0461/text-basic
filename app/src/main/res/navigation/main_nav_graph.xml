@@ -16,8 +16,13 @@
         tools:layout="@layout/fragment_guide"
         android:label="GuideFragment"/>
     <fragment
-        android:id="@+id/settings"
+        android:id="@+id/settings_old"
         android:name="com.denizd.textbasic.fragment.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"/>
+    <fragment
+        android:id="@+id/settings_new"
+        android:name="com.denizd.textbasic.fragment.SettingsNewFragment"
+        android:label="SettingsNewFragment"
+        tools:layout="@layout/fragment_settings_new"/>
 </navigation>

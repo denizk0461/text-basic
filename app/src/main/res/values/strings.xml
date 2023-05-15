@@ -20,6 +20,37 @@
     <string name="quote_fragment_snack_text">Entry has been deleted</string>
     <string name="quote_fragment_snack_undo">Undo</string>
 
+    <string name="guide_fragment_title">Guide</string>
+
+    <string name="settings_fragment_title">Settings</string>
+
+    <string name="settings_text_header">Text Style</string>
+    <string name="settings_text_font_header">Text font</string>
+    <string name="settings_text_font_hint">Font</string>
+    <string name="settings_text_style_header">Font style</string>
+    <string name="settings_text_style_button_default">Default</string>
+    <string name="settings_text_style_button_bold">Bold</string>
+    <string name="settings_text_style_button_italic">Italic</string>
+    <string name="settings_text_style_button_bolditalic">Bold &amp; Italic</string>
+    <string name="settings_text_size_header">Text size</string>
+    <string name="settings_text_transparency_header">Text transparency</string>
+
+    <string name="settings_highlight_header">Highlight Style</string>
+    <string name="settings_highlight_style_header">Style</string>
+    <string name="settings_highlight_style_button_none">None</string>
+    <string name="settings_highlight_style_button_background">Background</string>
+    <string name="settings_highlight_style_button_stroke">Stroke</string>
+    <string name="settings_highlight_style_button_shadow">Shadow</string>
+    <string name="settings_highlight_intensity_header">Intensity</string>
+    <string name="settings_highlight_transparency_header">Transparency</string>
+
+    <string name="settings_widget_header">Widget</string>
+    <string name="settings_widget_order_title">Set entry order</string>
+    <string name="settings_widget_order_subtitle">This is the order in which your entries will be shown when you click on the widget</string>
+    <string name="settings_widget_order_default">Default</string>
+    <string name="settings_widget_order_random">Random</string>
+    <string name="settings_widget_position_title">Set position of the text</string>
+
     <string name="edit">Edit Text</string>
     <string name="nav_items_entries">Entries</string>
     <string name="guide">Guide</string>
@@ -28,15 +59,15 @@
     <string name="position">position</string>
 
     <string name="widget_preview_content_desc">Preview for the widget</string>
-    <string name="position_button_content_desc_tl">Position widget at top left</string>
-    <string name="position_button_content_desc_tc">Position widget at top center</string>
-    <string name="position_button_content_desc_tr">Position widget at top right</string>
-    <string name="position_button_content_desc_cl">Position widget at center left</string>
-    <string name="position_button_content_desc_cc">Position widget at center</string>
-    <string name="position_button_content_desc_cr">Position widget at center right</string>
-    <string name="position_button_content_desc_bl">Position widget at bottom left</string>
-    <string name="position_button_content_desc_bc">Position widget at bottom center</string>
-    <string name="position_button_content_desc_br">Position widget at bottom right</string>
+    <string name="position_button_content_desc_tl">Position text at top left</string>
+    <string name="position_button_content_desc_tc">Position text at top center</string>
+    <string name="position_button_content_desc_tr">Position text at top right</string>
+    <string name="position_button_content_desc_cl">Position text at center left</string>
+    <string name="position_button_content_desc_cc">Position text at center</string>
+    <string name="position_button_content_desc_cr">Position text at center right</string>
+    <string name="position_button_content_desc_bl">Position text at bottom left</string>
+    <string name="position_button_content_desc_bc">Position text at bottom center</string>
+    <string name="position_button_content_desc_br">Position text at bottom right</string>
 
     <string name="text_colour_input_hint">Text colour (hex, no #)</string>
     <string name="bg_colour_input_hint">Background colour (hex, no #)</string>
