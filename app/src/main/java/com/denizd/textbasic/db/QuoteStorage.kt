@@ -41,6 +41,7 @@ class QuoteStorage private constructor(context: Context) {
         private const val KEY_AVG_WIDTH = "avgwidth"
         private const val KEY_AVG_HEIGHT = "avgheight"
         private const val KEY_OUTLINE_SIZE = "outlinesize"
+        const val KEY_OUTLINE_SIZE_NEW = "outlinesizeint"
     }
 
     private val prefs = context.getSharedPreferences(PREF_NAME, 0)
@@ -108,13 +109,19 @@ class QuoteStorage private constructor(context: Context) {
             2 -> Typeface.MONOSPACE
             else -> Typeface.SANS_SERIF
         },
-        getTypefaceStyle()
+        when (getTypefaceStyle()) {
+            1 -> Typeface.BOLD
+            2 -> Typeface.ITALIC
+            3 -> Typeface.BOLD_ITALIC
+            else -> Typeface.NORMAL
+        }
     )
     fun getTypefaceStyle(): Int = prefs.getInt(KEY_TYPEFACE_STYLE, 0)
     fun setTypefaceStyle(newValue: Int) {
         prefs.edit().putInt(KEY_TYPEFACE_STYLE, newValue).apply()
     }
     fun getOutlineSize(): Float = prefs.getFloat(KEY_OUTLINE_SIZE, 8f)
+    fun getOutlineSizeNew(): Int = prefs.getInt(KEY_OUTLINE_SIZE_NEW, 8)
 
     // Pair<text colour, background colour>
     fun getColours(
@@ -132,13 +139,13 @@ class QuoteStorage private constructor(context: Context) {
             Color.parseColor(
                 ColorTransparentUtils.transparentColor(
                     context.getColor(colours.first),
-                    textTransparency * 5
+                    textTransparency,
                 )
             ),//Color.parseColor(ColorTransparentUtils.transparentColor(colours.first, 10)),
             Color.parseColor(
                 ColorTransparentUtils.transparentColor(
                     context.getColor(colours.second),
-                    bgTransparency * 5
+                    bgTransparency,
                 )
             )
         )

@@ -33,7 +33,7 @@
     <string name="settings_text_style_button_italic">Italic</string>
     <string name="settings_text_style_button_bolditalic">Bold &amp; Italic</string>
     <string name="settings_text_size_header">Text size</string>
-    <string name="settings_text_transparency_header">Text transparency</string>
+    <string name="settings_text_transparency_header">Text opacity</string>
 
     <string name="settings_highlight_header">Highlight Style</string>
     <string name="settings_highlight_style_header">Style</string>
@@ -42,7 +42,7 @@
     <string name="settings_highlight_style_button_stroke">Stroke</string>
     <string name="settings_highlight_style_button_shadow">Shadow</string>
     <string name="settings_highlight_intensity_header">Intensity</string>
-    <string name="settings_highlight_transparency_header">Transparency</string>
+    <string name="settings_highlight_transparency_header">Opacity</string>
 
     <string name="settings_widget_header">Widget</string>
     <string name="settings_widget_order_title">Randomise entry order</string>

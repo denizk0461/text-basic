@@ -22,7 +22,7 @@ class CanvasText {
             }
 
             val widgetSize = storage.getSize()
-            val outlineSize = storage.getOutlineSize()
+            val outlineSize = storage.getOutlineSizeNew().toFloat()
 
             val bmp = if (isPreview) {
                 Bitmap.createBitmap(1024, 256, Bitmap.Config.ARGB_8888)
