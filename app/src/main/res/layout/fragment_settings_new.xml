@@ -675,6 +675,128 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <!-- widget position -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mono_semibold_italic"
+                            android:text="@string/settings_widget_position_title"
+                            android:textSize="16sp" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/gravity_buttons_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="12dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:padding="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_gravity="center_horizontal">
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:rowCount="3"
+                                android:columnCount="3">
+
+                                <ImageButton
+                                    android:id="@+id/button_top_left"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_top_left"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_tl"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_top_middle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_top"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_tc"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_top_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_top_right"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_tr"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_middle_left"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_left"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_cl"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_middle_middle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/dot"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_cc"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_middle_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_right"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_cr"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_bottom_left"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_bottom_left"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_bl"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_bottom_middle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_bottom"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_bc"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                                <ImageButton
+                                    android:id="@+id/button_bottom_right"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_bottom_right"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/position_button_content_desc_br"
+                                    android:padding="@dimen/orientation_button_padding"/>
+
+                            </GridLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </com.google.android.material.card.MaterialCardView>

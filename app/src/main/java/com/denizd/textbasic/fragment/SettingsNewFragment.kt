@@ -2,8 +2,11 @@ package com.denizd.textbasic.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import com.denizd.textbasic.BuildConfig
 import com.denizd.textbasic.R
 import com.denizd.textbasic.databinding.FragmentSettingsNewBinding
@@ -233,6 +236,23 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
             }
         }
 
+        // --- widget position (gravity) --- //
+        val gravityButtons = listOf(
+            binding.buttonTopLeft, binding.buttonTopMiddle, binding.buttonTopRight,
+            binding.buttonMiddleLeft, binding.buttonMiddleMiddle, binding.buttonMiddleRight,
+            binding.buttonBottomLeft, binding.buttonBottomMiddle, binding.buttonBottomRight
+        )
+
+        setGravityButtons(gravityButtons, storage.getWidgetGravity())
+
+        gravityButtons.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                storage.setWidgetGravity(index)
+                setGravityButtons(gravityButtons, index)
+                updatePreview()
+            }
+        }
+
         /*
          * Display the app's version as set in the build.gradle. Also display if the app is a
          * development version, and if so, display build timestamp.
@@ -242,6 +262,20 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
             "${BuildConfig.VERSION_NAME}-${if (BuildConfig.DEBUG) "dev" else "release"}"
 
         updatePreview()
+    }
+
+    private fun setGravityButtons(buttons: List<ImageButton>, gravity: Int) {
+        val transparent = context.getColor(android.R.color.transparent)
+
+        buttons.forEach { button ->
+            button.setBackgroundColor(transparent)
+        }
+
+        val typedValue = TypedValue()
+        context.theme.resolveAttribute(R.attr.colorSecContainer, typedValue, true)
+        @ColorInt val colorTertiary = typedValue.data
+
+        buttons[gravity].setBackgroundColor(colorTertiary)
     }
 
     /**
