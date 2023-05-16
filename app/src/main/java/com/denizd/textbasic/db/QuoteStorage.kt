@@ -126,6 +126,16 @@ class QuoteStorage private constructor(context: Context) {
     fun getOutlineSize(): Float = prefs.getFloat(KEY_OUTLINE_SIZE, 8f)
     fun getOutlineSizeNew(): Int = prefs.getInt(KEY_OUTLINE_SIZE_NEW, 8)
 
+    fun getTextColour(): String = prefs.getString(SettingsPreference.TEXT_COLOUR.key, "ffffff") ?: "ffffff"
+    fun setTextColour(newValue: String) {
+        prefs.edit().putString(SettingsPreference.TEXT_COLOUR.key, newValue).apply()
+    }
+
+    fun getHighlightColour(): String = prefs.getString(SettingsPreference.HIGHLIGHT_COLOUR.key, "000000") ?: "000000"
+    fun setHighlightColour(newValue: String) {
+        prefs.edit().putString(SettingsPreference.HIGHLIGHT_COLOUR.key, newValue).apply()
+    }
+
     // Pair<text colour, background colour>
     fun getColours(
         isInverted: Boolean = isInvertedEnabled(),

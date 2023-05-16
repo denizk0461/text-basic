@@ -1,6 +1,9 @@
 package com.denizd.textbasic.fragment
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
@@ -9,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.annotation.StringRes
 import androidx.transition.TransitionManager
 import com.denizd.textbasic.BuildConfig
 import com.denizd.textbasic.R
@@ -19,6 +23,9 @@ import com.denizd.textbasic.util.SettingsPreference
 import com.denizd.textbasic.util.viewBinding
 import com.denizd.textbasic.widget.CanvasText
 import com.google.android.material.button.MaterialButton
+import com.skydoves.colorpickerview.ColorEnvelope
+import com.skydoves.colorpickerview.ColorPickerDialog
+import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import java.util.Calendar
 
 class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
@@ -146,6 +153,13 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
             SettingsPreference.TEXT_SIZE,
         )
 
+        // --- text colour --- //
+        setTextColour(storage.getTextColour())
+
+        binding.buttonTextColourDisplay.setOnClickListener {
+            showColorPickerDialog(context, R.string.settings_text_colour_dialog_title, true)//, storage.getTextColour())
+        }
+
         // --- highlight style --- //
         binding.toggleGroupHighlightStyle.apply {
             check(checkBackgroundIntensity(storage.getBackgroundType()))
@@ -211,6 +225,13 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
             binding.textIntensity,
             SettingsPreference.HIGHLIGHT_INTENSITY,
         )
+
+        // --- highlight colour --- //
+        setHighlightColour(storage.getHighlightColour())
+
+        binding.buttonHighlightColourDisplay.setOnClickListener {
+            showColorPickerDialog(context, R.string.settings_highlight_colour_dialog_title, false)
+        }
 
         // --- randomise order entries --- //
         binding.switchOrderRandom.apply {
@@ -342,6 +363,54 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
 
             updatePreview()
         }
+    }
+
+    private fun setTextColour(colour: String) {
+        binding.textTextColourCode.text = "#$colour"
+
+        binding.buttonTextColourDisplay.backgroundTintList = ColorStateList.valueOf(
+            Color.parseColor("#$colour")
+        )
+    }
+
+    private fun setHighlightColour(colour: String) {
+        binding.textHighlightColourCode.text = "#$colour"
+
+        binding.buttonHighlightColourDisplay.backgroundTintList = ColorStateList.valueOf(
+            Color.parseColor("#$colour")
+        )
+    }
+
+    // TODO this should start with the current colour of the attribute that's to be changed!
+    private fun showColorPickerDialog(
+        context: Context,
+        @StringRes title: Int,
+        isText: Boolean,
+//        tag: String,
+//        colour: String,
+    ) {
+        ColorPickerDialog.Builder(context)
+//        .setInitialColor(Color.parseColor("#$colour"))
+//        .setPreferenceName(tag)
+//        .setLifecycleOwner(this)
+//        .build()
+            .setTitle(getString(title))
+            .setPositiveButton(getString(R.string.settings_colour_dialog_positive), object : ColorEnvelopeListener {
+                override fun onColorSelected(envelope: ColorEnvelope, fromUser: Boolean) {
+                    if (isText) {
+                        storage.setTextColour(envelope.hexCode)
+                        setTextColour(envelope.hexCode)
+                    } else {
+                        storage.setHighlightColour(envelope.hexCode)
+                        setHighlightColour(envelope.hexCode)
+                    }
+                    updatePreview()
+                }})
+            .setNegativeButton(getString(R.string.settings_colour_dialog_negative)
+            ) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .show()
     }
 
     private fun updatePreview() {

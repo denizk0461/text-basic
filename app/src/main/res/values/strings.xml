@@ -23,6 +23,8 @@
     <string name="guide_fragment_title">Guide</string>
 
     <string name="settings_fragment_title">Settings</string>
+    <string name="settings_colour_dialog_negative">Close</string>
+    <string name="settings_colour_dialog_positive">Save</string>
 
     <string name="settings_text_header">Text Style</string>
     <string name="settings_text_font_header">Text font</string>
@@ -33,6 +35,8 @@
     <string name="settings_text_style_button_italic">Italic</string>
     <string name="settings_text_style_button_bolditalic">Bold &amp; Italic</string>
     <string name="settings_text_size_header">Text size</string>
+    <string name="settings_text_colour_header">Text colour</string>
+    <string name="settings_text_colour_dialog_title">Pick a text colour</string>
     <string name="settings_text_transparency_header">Text opacity</string>
 
     <string name="settings_highlight_header">Highlight Style</string>
@@ -42,6 +46,8 @@
     <string name="settings_highlight_style_button_stroke">Stroke</string>
     <string name="settings_highlight_style_button_shadow">Shadow</string>
     <string name="settings_highlight_intensity_header">Intensity</string>
+    <string name="settings_highlight_colour_header">Highlight colour</string>
+    <string name="settings_highlight_colour_dialog_title">Pick a highlight colour</string>
     <string name="settings_highlight_transparency_header">Opacity</string>
 
     <string name="settings_widget_header">Widget</string>

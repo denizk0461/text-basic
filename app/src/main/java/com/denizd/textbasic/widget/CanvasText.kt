@@ -40,7 +40,7 @@ class CanvasText {
                 storage.getNextQuote()
             }.ifBlank { context.getString(R.string.info_add_text) }
 
-            val colours = storage.getColours(context = context)
+//            val colours = storage.getColours(context = context)
 
             val scaledTextSize =
                 context.resources.displayMetrics.scaledDensity * if (/*isPreview*/false) previewSize else {
@@ -52,7 +52,7 @@ class CanvasText {
 
             val paint = TextPaint().apply {
                 style = Paint.Style.FILL
-                color = colours.first
+                color = Color.parseColor("#${storage.getTextColour()}")
                 textSize = scaledTextSize
                 textAlign = when (widgetGravity) {
                     0, 3, 6 -> Paint.Align.LEFT
@@ -116,7 +116,7 @@ class CanvasText {
                 0 -> { // background
                     val bgPaint = Paint().apply {
                         style = Paint.Style.FILL
-                        color = colours.second
+                        color = Color.parseColor("#${storage.getHighlightColour()}")
                     }
                     val rounding = 24f
 
@@ -142,7 +142,7 @@ class CanvasText {
                     val strokePaint = TextPaint().apply {
                         style = Paint.Style.STROKE
                         strokeWidth = outlineSize //if (isPreview) previewSize / 1.5f else
-                        color = colours.second
+                        color = Color.parseColor("#${storage.getHighlightColour()}")
                         textSize = scaledTextSize
                         textAlign = alignment
 

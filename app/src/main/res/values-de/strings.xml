@@ -24,6 +24,8 @@
     <string name="guide_fragment_title">Anleitung</string>
 
     <string name="settings_fragment_title">Einstellungen</string>
+    <string name="settings_colour_dialog_negative">Schließen</string>
+    <string name="settings_colour_dialog_positive">Speichern</string>
 
     <string name="settings_text_header">Textstil</string>
     <string name="settings_text_font_header">Textschrift</string>
@@ -34,6 +36,8 @@
     <string name="settings_text_style_button_italic">Kursiv</string>
     <string name="settings_text_style_button_bolditalic">Fett &amp; Kursiv</string>
     <string name="settings_text_size_header">Textgröße</string>
+    <string name="settings_text_colour_header">Textfarbe</string>
+    <string name="settings_text_colour_dialog_title">Wähle eine Textfarbe</string>
     <string name="settings_text_transparency_header">Textopazität</string>
 
     <string name="settings_highlight_header">Highlight-Stil</string>
@@ -43,6 +47,8 @@
     <string name="settings_highlight_style_button_stroke">Umrandet</string>
     <string name="settings_highlight_style_button_shadow">Schatten</string>
     <string name="settings_highlight_intensity_header">Stärke</string>
+    <string name="settings_highlight_colour_header">Highlight-Farbe</string>
+    <string name="settings_highlight_colour_dialog_title">Wähle eine Highlight-Farbe</string>
     <string name="settings_highlight_transparency_header">Highlight-Opazität</string>
 
     <string name="settings_widget_header">Widget</string>
