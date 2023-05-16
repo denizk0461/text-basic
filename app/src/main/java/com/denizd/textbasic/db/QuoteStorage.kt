@@ -103,6 +103,9 @@ class QuoteStorage private constructor(context: Context) {
         prefs.edit().putInt(KEY_BACKGROUND_TYPE, newValue).apply()
     }
     fun getTypefaceIndex(): Int = prefs.getInt(KEY_TYPEFACE, 0)
+    fun setTypefaceIndex(newValue: Int) {
+        prefs.edit().putInt(KEY_TYPEFACE, newValue).apply()
+    }
     fun getTypeface(): Typeface = Typeface.create(
         when (getTypefaceIndex()) {
             1 -> Typeface.SERIF

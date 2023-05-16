@@ -79,6 +79,12 @@
     <string name="serif">Serif</string>
     <string name="monospace">Monospace</string>
 
+    <string-array name="text_fonts">
+        <item>Sans-Serif</item>
+        <item>Serif</item>
+        <item>Monospace</item>
+    </string-array>
+
     <string name="background">Background</string>
     <string name="outline">Outline</string>
     <string name="shadow">Shadow</string>
