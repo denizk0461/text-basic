@@ -37,6 +37,7 @@
     <string name="settings_text_style_button_bolditalic">Fett &amp; Kursiv</string>
     <string name="settings_text_size_header">Textgröße</string>
     <string name="settings_text_colour_header">Textfarbe</string>
+    <string name="settings_text_colour_button_text">Wähle eine Farbe</string>
     <string name="settings_text_colour_dialog_title">Wähle eine Textfarbe</string>
     <string name="settings_text_transparency_header">Textopazität</string>
 
@@ -48,6 +49,7 @@
     <string name="settings_highlight_style_button_shadow">Schatten</string>
     <string name="settings_highlight_intensity_header">Stärke</string>
     <string name="settings_highlight_colour_header">Highlight-Farbe</string>
+    <string name="settings_highlight_colour_button_text">Wähle eine Farbe</string>
     <string name="settings_highlight_colour_dialog_title">Wähle eine Highlight-Farbe</string>
     <string name="settings_highlight_transparency_header">Highlight-Opazität</string>
 

@@ -20,6 +20,7 @@ import com.denizd.textbasic.databinding.FragmentSettingsNewBinding
 import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.sheet.TextSheet
 import com.denizd.textbasic.util.SettingsPreference
+import com.denizd.textbasic.util.getConstrast
 import com.denizd.textbasic.util.viewBinding
 import com.denizd.textbasic.widget.CanvasText
 import com.google.android.material.button.MaterialButton
@@ -368,17 +369,27 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
     private fun setTextColour(colour: String) {
         binding.textTextColourCode.text = "#$colour"
 
+        val newColour = Color.parseColor("#$colour")
+        val contrast = newColour.getConstrast()
+
         binding.buttonTextColourDisplay.backgroundTintList = ColorStateList.valueOf(
-            Color.parseColor("#$colour")
+            newColour
         )
+
+        binding.buttonTextColourDisplay.setTextColor(contrast)
+        binding.buttonTextColourDisplay.iconTint = ColorStateList.valueOf(contrast)
     }
 
     private fun setHighlightColour(colour: String) {
         binding.textHighlightColourCode.text = "#$colour"
 
-        binding.buttonHighlightColourDisplay.backgroundTintList = ColorStateList.valueOf(
-            Color.parseColor("#$colour")
-        )
+        val newColour = Color.parseColor("#$colour")
+        val contrast = newColour.getConstrast()
+
+        binding.buttonHighlightColourDisplay.backgroundTintList = ColorStateList.valueOf(newColour)
+
+        binding.buttonHighlightColourDisplay.setTextColor(contrast)
+        binding.buttonHighlightColourDisplay.iconTint = ColorStateList.valueOf(contrast)
     }
 
     // TODO this should start with the current colour of the attribute that's to be changed!
@@ -390,10 +401,6 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
 //        colour: String,
     ) {
         ColorPickerDialog.Builder(context)
-//        .setInitialColor(Color.parseColor("#$colour"))
-//        .setPreferenceName(tag)
-//        .setLifecycleOwner(this)
-//        .build()
             .setTitle(getString(title))
             .setPositiveButton(getString(R.string.settings_colour_dialog_positive), object : ColorEnvelopeListener {
                 override fun onColorSelected(envelope: ColorEnvelope, fromUser: Boolean) {

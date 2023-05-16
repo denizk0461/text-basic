@@ -310,8 +310,10 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                app:icon="@drawable/color_lens"
                                 app:strokeColor="@color/list_button_stroke"
                                 app:strokeWidth="1dp"
+                                android:text="@string/settings_text_colour_button_text"
                                 android:layout_marginStart="8dp"/>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -532,8 +534,10 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                app:icon="@drawable/color_lens"
                                 app:strokeColor="@color/list_button_stroke"
                                 app:strokeWidth="1dp"
+                                android:text="@string/settings_highlight_colour_button_text"
                                 android:layout_marginStart="8dp"/>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>

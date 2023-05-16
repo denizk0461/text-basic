@@ -1,6 +1,7 @@
 package com.denizd.textbasic.util
 
 import android.content.res.Resources
+import android.graphics.Color
 import android.util.TypedValue
 import android.view.View
 import androidx.annotation.AttrRes
@@ -54,3 +55,12 @@ fun Resources.Theme.showSnackBar(
     anchor?.let { a -> s.setAnchorView(a) }
     s.show()
 }
+
+fun Int.getConstrast(): Int = Color.parseColor(if ((
+        Color.red(this) * 0.299 +
+        Color.green(this) * 0.587 +
+        Color.blue(this) * 0.114) > 186) {
+    "#000000"
+} else {
+    "#ffffff"
+})
