@@ -5,7 +5,7 @@
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SettingsFragment">
+    tools:context=".fragment.SettingsNewFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar"
@@ -59,6 +59,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/settings_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -274,78 +275,6 @@
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <!-- Text transparency -->
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="8dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/mono_semibold_italic"
-                            android:text="@string/settings_text_transparency_header"
-                            android:textSize="16sp" />
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_text_transparency_decrease_fast"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/double_arrow_left"
-                                android:layout_marginEnd="1dp"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_text_transparency_decrease"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/minus"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                            <TextView
-                                android:id="@+id/text_transparency"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mono_semibold"
-                                android:layout_marginHorizontal="8dp"
-                                android:textSize="28sp"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_text_transparency_increase"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/plus"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_text_transparency_increase_fast"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/double_arrow_right"
-                                android:layout_marginStart="1dp"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </com.google.android.material.card.MaterialCardView>
@@ -387,8 +316,7 @@
                         android:layout_marginEnd="8dp"
                         android:orientation="vertical"
                         android:paddingHorizontal="16dp"
-                        android:paddingVertical="8dp"
-                        android:animateLayoutChanges="true">
+                        android:paddingVertical="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -514,78 +442,6 @@
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/button_intensity_increase_fast"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/double_arrow_right"
-                                android:layout_marginStart="1dp"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <!-- Highlight transparency -->
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="8dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/mono_semibold_italic"
-                            android:text="@string/settings_highlight_transparency_header"
-                            android:textSize="16sp" />
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_highlight_transparency_decrease_fast"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/double_arrow_left"
-                                android:layout_marginEnd="1dp"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_highlight_transparency_decrease"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/minus"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                            <TextView
-                                android:id="@+id/text_highlight_transparency"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mono_semibold"
-                                android:layout_marginHorizontal="8dp"
-                                android:textSize="28sp"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_highlight_transparency_increase"
-                                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:icon="@drawable/plus"
-                                android:minWidth="0dp"
-                                app:iconPadding="0dp"/>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/button_highlight_transparency_increase_fast"
                                 style="@style/Widget.Material3.Button.IconButton.Outlined"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -830,6 +686,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp" />
+
+                    <!-- Licences -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/button_licences"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selectable_item_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mono_semibold_italic"
+                            android:text="@string/settings_licences_title"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/licences_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_licences_subtitle"
+                            android:textSize="16sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <!-- App version -->
                     <androidx.appcompat.widget.LinearLayoutCompat

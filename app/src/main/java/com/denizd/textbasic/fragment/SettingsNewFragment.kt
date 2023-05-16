@@ -4,18 +4,22 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.transition.TransitionManager
 import com.denizd.textbasic.BuildConfig
 import com.denizd.textbasic.R
 import com.denizd.textbasic.databinding.FragmentSettingsNewBinding
 import com.denizd.textbasic.db.QuoteStorage
+import com.denizd.textbasic.sheet.TextSheet
 import com.denizd.textbasic.util.SettingsPreference
 import com.denizd.textbasic.util.viewBinding
 import com.denizd.textbasic.widget.CanvasText
 import com.google.android.material.button.MaterialButton
+import java.util.Calendar
 
 class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
 
@@ -142,42 +146,6 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
             SettingsPreference.TEXT_SIZE,
         )
 
-        // --- text transparency --- //
-        binding.textTransparency.text = storage.getInt(SettingsPreference.TEXT_TRANSPARENCY, 100).toString()
-
-        binding.buttonTextTransparencyDecreaseFast.setOnClickAction(
-            0,
-            100,
-            isPositive = false,
-            isFast = true,
-            binding.textTransparency,
-            SettingsPreference.TEXT_TRANSPARENCY,
-        )
-        binding.buttonTextTransparencyDecrease.setOnClickAction(
-            0,
-            100,
-            isPositive = false,
-            isFast = false,
-            binding.textTransparency,
-            SettingsPreference.TEXT_TRANSPARENCY,
-        )
-        binding.buttonTextTransparencyIncrease.setOnClickAction(
-            0,
-            100,
-            isPositive = true,
-            isFast = false,
-            binding.textTransparency,
-            SettingsPreference.TEXT_TRANSPARENCY,
-        )
-        binding.buttonTextTransparencyIncreaseFast.setOnClickAction(
-            0,
-            100,
-            isPositive = true,
-            isFast = true,
-            binding.textTransparency,
-            SettingsPreference.TEXT_TRANSPARENCY,
-        )
-
         // --- highlight style --- //
         binding.toggleGroupHighlightStyle.apply {
             check(checkBackgroundIntensity(storage.getBackgroundType()))
@@ -244,42 +212,6 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
             SettingsPreference.HIGHLIGHT_INTENSITY,
         )
 
-        // --- text highlight transparency --- //
-        binding.textHighlightTransparency.text = storage.getInt(SettingsPreference.HIGHLIGHT_TRANSPARENCY, 100).toString()
-
-        binding.buttonHighlightTransparencyDecreaseFast.setOnClickAction(
-            0,
-            100,
-            isPositive = false,
-            isFast = true,
-            binding.textHighlightTransparency,
-            SettingsPreference.HIGHLIGHT_TRANSPARENCY,
-        )
-        binding.buttonHighlightTransparencyDecrease.setOnClickAction(
-            0,
-            100,
-            isPositive = false,
-            isFast = false,
-            binding.textHighlightTransparency,
-            SettingsPreference.HIGHLIGHT_TRANSPARENCY,
-        )
-        binding.buttonHighlightTransparencyIncrease.setOnClickAction(
-            0,
-            100,
-            isPositive = true,
-            isFast = false,
-            binding.textHighlightTransparency,
-            SettingsPreference.HIGHLIGHT_TRANSPARENCY,
-        )
-        binding.buttonHighlightTransparencyIncreaseFast.setOnClickAction(
-            0,
-            100,
-            isPositive = true,
-            isFast = true,
-            binding.textHighlightTransparency,
-            SettingsPreference.HIGHLIGHT_TRANSPARENCY,
-        )
-
         // --- randomise order entries --- //
         binding.switchOrderRandom.apply {
             isChecked = storage.isOrderRandom()
@@ -304,6 +236,21 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
                 setGravityButtons(gravityButtons, index)
                 updatePreview()
             }
+        }
+
+        // Set click listener for showing licences dialogue
+        binding.buttonLicences.setOnClickListener {
+            openBottomSheet(
+                TextSheet().also { sheet ->
+                    val bundle = Bundle()
+                    bundle.putString("header", getString(R.string.sheet_licences_header))
+                    bundle.putString("content", getString(
+                        R.string.sheet_licences_content,
+                        Calendar.getInstance().get(Calendar.YEAR).toString(),
+                    ))
+                    sheet.arguments = bundle
+                }
+            )
         }
 
         /*
@@ -335,22 +282,28 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
      * Retrieves which button to check for the highlight, and sets the visibility of the intensity
      * modifying layout accordingly.
      */
-    private fun checkBackgroundIntensity(index: Int): Int = when (index) {
-        0 -> { // background
-            binding.layoutIntensity.visibility = View.GONE
-            R.id.toggle_button_highlight_background
-        }
-        1 -> { // stroke
-            binding.layoutIntensity.visibility = View.VISIBLE
-            R.id.toggle_button_highlight_stroke
-        }
-        2 -> { // shadow
-            binding.layoutIntensity.visibility = View.VISIBLE
-            R.id.toggle_button_highlight_shadow
-        }
-        else -> { // none
-            binding.layoutIntensity.visibility = View.GONE
-            R.id.toggle_button_highlight_none
+    private fun checkBackgroundIntensity(index: Int): Int {
+        TransitionManager.beginDelayedTransition(binding.root.parent as ViewGroup)
+        return when (index) {
+            0 -> { // background
+                binding.layoutIntensity.visibility = View.GONE
+                R.id.toggle_button_highlight_background
+            }
+
+            1 -> { // stroke
+                binding.layoutIntensity.visibility = View.VISIBLE
+                R.id.toggle_button_highlight_stroke
+            }
+
+            2 -> { // shadow
+                binding.layoutIntensity.visibility = View.VISIBLE
+                R.id.toggle_button_highlight_shadow
+            }
+
+            else -> { // none
+                binding.layoutIntensity.visibility = View.GONE
+                R.id.toggle_button_highlight_none
+            }
         }
     }
 

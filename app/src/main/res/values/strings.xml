@@ -52,6 +52,12 @@
     <string name="settings_widget_position_title">Set position of the text</string>
 
     <string name="settings_misc_header">Miscellaneous</string>
+
+    <string name="settings_licences_title">View licences</string>
+    <string name="settings_licences_subtitle">Resources that made this app possible</string>
+    <string name="sheet_licences_header">Licences</string>
+    <string name="sheet_licences_content" translatable="false">Android, Material Design Resources © 2014 – %1$s Google, licenced under the Apache 2.0 License.\nhttps://developer.android.com\nhttps://material.io\n\nRoboto Mono © 2015 – %1$s Christian Robertson, licenced under the Apache 2.0 License.\nhttps://fonts.google.com/specimen/Roboto+Mono\n\nColorPickerView © 2017 – %1$s Jaewoong Eum, licenced under the Apache 2.0 License.\nhttps://github.com/skydoves/ColorPickerView\n\nApp developed by Deniz Düzgören.\ndenizk0461@gmail.com</string>
+
     <string name="settings_misc_app_version">App Version</string>
 
     <string name="edit">Edit Text</string>
@@ -97,8 +103,7 @@
     <string name="guide1"><i>Text Basic</i> is a simple app for displaying a text on your home screen! Just add the <i>Text Basic</i> widget to your home screen, enter text in the app, and it will show on your home screen.
 \n\n<b>Cycle through texts:</b> In the app, you can enter as many texts as you like by clicking the [+] button and entering your text into the newly appeared field. All texts are saved automatically, you have to take no further action.\nYou can cycle through your texts by clicking on the widget on your home screen. They will be shown in the order you added them in, but you can turn on "random order" in the app\'s settings to randomise the order.
 \nNOTE: if clicking on the widget does not cycle between texts, please try changing the size of the widget and then change it back. This should solve the issue.
-\n\n<b>Customise the look:</b> You can change how your text will look by heading into the app\'s settings – there, you can edit the text appearance by changing the size, font, position, apply formatting options, and even add a background, an outline, or a shadow.
-\nTip: if the text is hard to read on your wallpaper, try inverting the colours.</string>
+\n\n<b>Customise the look:</b> You can change how your text will look by heading into the app\'s settings – there, you can edit the text appearance by changing the size, font, position, apply formatting options, and even add a background, an outline, or a shadow.</string>
 
     <string-array name="typefaces">
         <item>Sans-Serif</item>

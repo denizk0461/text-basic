@@ -11,11 +11,6 @@
         android:title="@string/guide"
         android:enabled="true"/>
     <item
-        android:id="@+id/settings_old"
-        android:icon="@drawable/settings_outlined"
-        android:title="old settings"
-        android:enabled="true"/>
-    <item
         android:id="@+id/settings_new"
         android:icon="@drawable/settings_outlined"
         android:title="@string/settings"
