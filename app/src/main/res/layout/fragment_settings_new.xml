@@ -302,7 +302,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textSize="16sp"
-                                android:fontFamily="@font/mono_medium"/>
+                                android:fontFamily="@font/mono_medium"
+                                android:gravity="center"/>
 
                             <com.google.android.material.button.MaterialButton
                                 style="@style/Widget.Material3.Button.TonalButton"
@@ -526,7 +527,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textSize="16sp"
-                                android:fontFamily="@font/mono_medium"/>
+                                android:fontFamily="@font/mono_medium"
+                                android:gravity="center"/>
 
                             <com.google.android.material.button.MaterialButton
                                 style="@style/Widget.Material3.Button.TonalButton"
