@@ -41,5 +41,6 @@
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"/>
+    <!--        ads:adUnitId="ca-app-pub-6028283326987089/7147449316"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

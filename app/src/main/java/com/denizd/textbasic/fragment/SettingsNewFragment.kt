@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorInt
@@ -16,6 +15,7 @@ import androidx.annotation.StringRes
 import androidx.transition.TransitionManager
 import com.denizd.textbasic.BuildConfig
 import com.denizd.textbasic.R
+import com.denizd.textbasic.adapter.DropdownAdapter
 import com.denizd.textbasic.databinding.FragmentSettingsNewBinding
 import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.sheet.TextSheet
@@ -41,10 +41,9 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
         storage = QuoteStorage.getInstance(context)
 
         // --- text font --- //
-        val fontAdapter = ArrayAdapter.createFromResource(
+        val fontAdapter = DropdownAdapter(
             context,
-            R.array.text_fonts,
-            R.layout.item_dropdown,
+            context.resources.getStringArray(R.array.text_fonts).toList(),
         )
 
         binding.autoCompleteFont.setAdapter(fontAdapter)
