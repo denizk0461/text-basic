@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageButton
-import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
@@ -41,58 +41,22 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
         storage = QuoteStorage.getInstance(context)
 
         // --- text font --- //
-//        binding.autoCompleteFont.setOnClickListener {
-//            // Create menu for selecting a new canteen
-//            PopupMenu(binding.root.context, binding.textLayoutFont).apply {
-//                setOnMenuItemClickListener { item ->
-//                    item?.itemId?.let { id ->
-//                        storage.setTypefaceStyle(id)
-//                    }
-//
-//                    // Update the preview
-//                    updatePreview()
-//                    true
-//                }
-//                menu.add(0, 0, 0, getString(R.string.sansserif))
-//                menu.add(1, 1, 1, getString(R.string.serif))
-//                menu.add(2, 2, 2, getString(R.string.monospace))
-//                show()
-//            }
-//        }
+        val fontAdapter = ArrayAdapter.createFromResource(
+            context,
+            R.array.text_fonts,
+            R.layout.item_dropdown,
+        )
 
-//        val fontAdapter = ArrayAdapter(
-//            context,
-//            R.layout.item_dropdown_menu,
-//            resources.getStringArray(R.array.text_fonts),
-//        )
-//
-//        binding.autoCompleteFont.setAdapter(fontAdapter)
+        binding.autoCompleteFont.setAdapter(fontAdapter)
+        binding.autoCompleteFont.setText(
+            fontAdapter.getItem(storage.getTypefaceIndex()).toString(),
+            false,
+        )
 
-        binding.autoCompleteFont
-            .setText(context.resources.getStringArray(R.array.text_fonts)[storage.getTypefaceIndex()])
-
-        binding.autoCompleteFont.setOnClickListener {
-            PopupMenu(binding.root.context, binding.autoCompleteFont).apply {
-                setOnMenuItemClickListener { item ->
-                    item?.itemId?.let { id ->
-                        val index = when (id) {
-                            R.id.serif -> 1
-                            R.id.monospace -> 2
-                            else -> 0 // sans-serif
-                        }
-                        storage.setTypefaceIndex(index)
-
-                        binding.autoCompleteFont
-                            .setText(context.resources.getStringArray(R.array.text_fonts)[index])
-                    }
-
-                    // Refresh the canteen menu for the newly selected canteen
-                    updatePreview()
-                    true
-                }
-                inflate(R.menu.list_fonts)
-                show()
-            }
+        binding.autoCompleteFont.setOnItemClickListener { _, _, position, _ ->
+            storage.setTypefaceIndex(position)
+            binding.autoCompleteFont.setText(fontAdapter.getItem(position), false)
+            updatePreview()
         }
 
         // --- font style --- //
