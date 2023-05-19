@@ -43,6 +43,14 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDele
             }
         }
 
+        binding.buttonSave.setOnClickListener {
+            save()
+            context.theme.showSnackBar(
+                binding.coordinatorLayout,
+                getString(R.string.quote_fragment_force_save),
+            )
+        }
+
         binding.fabAddQuote.setOnClickListener {
             quoteAdapter.addNewQuote()
         }
