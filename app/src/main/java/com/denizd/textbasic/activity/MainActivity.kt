@@ -10,8 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.denizd.textbasic.databinding.ActivityMainBinding
 import com.denizd.textbasic.widget.TextCanvasWidget
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,9 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(this.layoutInflater)
         setContentView(binding.root)
-
-        MobileAds.initialize(this)
-        binding.bannerView.loadAd(AdRequest.Builder().build())
 
         binding.navView.setupWithNavController(
             binding.navHostFragmentContentMain.getFragment<NavHostFragment>().findNavController()

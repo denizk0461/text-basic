@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.denizd.textbasic.adapter.QuoteAdapter
-import com.denizd.textbasic.db.QuoteStorage
-import com.denizd.textbasic.util.viewBinding
 import com.denizd.textbasic.R
+import com.denizd.textbasic.adapter.QuoteAdapter
 import com.denizd.textbasic.adapter.RecyclerRowMoveCallback
 import com.denizd.textbasic.databinding.FragmentQuoteBinding
+import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.util.showSnackBar
+import com.denizd.textbasic.util.viewBinding
+
 
 class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDeleteListener {
 
@@ -53,6 +54,7 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDele
 
         binding.fabAddQuote.setOnClickListener {
             quoteAdapter.addNewQuote()
+            binding.recyclerView.smoothScrollToPosition(quoteAdapter.itemCount - 1)
         }
     }
 
@@ -67,10 +69,9 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDele
 
     override fun onDelete(entry: String, index: Int) {
         context.theme.showSnackBar(
-            binding.coordinatorLayout,
-            getString(R.string.quote_fragment_snack_text),
-            null,
-            getString(R.string.quote_fragment_snack_undo),
+            view = binding.coordinatorLayout,
+            text = getString(R.string.quote_fragment_snack_text),
+            actionText = getString(R.string.quote_fragment_snack_undo),
         ) {
             quoteAdapter.addEntryAt(index, entry)
         }
