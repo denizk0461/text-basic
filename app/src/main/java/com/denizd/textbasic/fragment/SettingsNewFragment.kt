@@ -9,7 +9,6 @@ import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.transition.TransitionManager
@@ -19,11 +18,9 @@ import com.denizd.textbasic.adapter.DropdownAdapter
 import com.denizd.textbasic.databinding.FragmentSettingsNewBinding
 import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.sheet.TextSheet
-import com.denizd.textbasic.util.SettingsPreference
 import com.denizd.textbasic.util.getConstrast
 import com.denizd.textbasic.util.viewBinding
 import com.denizd.textbasic.widget.CanvasText
-import com.google.android.material.button.MaterialButton
 import com.skydoves.colorpickerview.ColorEnvelope
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
@@ -82,40 +79,48 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
         }
 
         // --- text size --- //
-        binding.textSize.text = storage.getInt(SettingsPreference.TEXT_SIZE, 18).toString()
+        binding.textSize.text = storage.getTextSize().toString()
 
-        binding.buttonSizeDecreaseFast.setOnClickAction(
-            4,
-            256,
-            isPositive = false,
-            isFast = true,
-            binding.textSize,
-            SettingsPreference.TEXT_SIZE,
-        )
-        binding.buttonSizeDecrease.setOnClickAction(
-            4,
-            256,
-            isPositive = false,
-            isFast = false,
-            binding.textSize,
-            SettingsPreference.TEXT_SIZE,
-        )
-        binding.buttonSizeIncrease.setOnClickAction(
-            4,
-            256,
-            isPositive = true,
-            isFast = false,
-            binding.textSize,
-            SettingsPreference.TEXT_SIZE,
-        )
-        binding.buttonSizeIncreaseFast.setOnClickAction(
-            4,
-            256,
-            isPositive = true,
-            isFast = true,
-            binding.textSize,
-            SettingsPreference.TEXT_SIZE,
-        )
+        binding.buttonSizeDecreaseFast.setOnClickListener {
+            storage.setTextSize(getValueInBoundary(
+                binding.textSize.text.toString().toInt(),
+                4,
+                256,
+                -10,
+            ))
+            binding.textSize.text = storage.getTextSize().toString()
+            updatePreview()
+        }
+        binding.buttonSizeDecrease.setOnClickListener {
+            storage.setTextSize(getValueInBoundary(
+                binding.textSize.text.toString().toInt(),
+                4,
+                256,
+                -1,
+            ))
+            binding.textSize.text = storage.getTextSize().toString()
+            updatePreview()
+        }
+        binding.buttonSizeIncrease.setOnClickListener {
+            storage.setTextSize(getValueInBoundary(
+                binding.textSize.text.toString().toInt(),
+                4,
+                256,
+                1,
+            ))
+            binding.textSize.text = storage.getTextSize().toString()
+            updatePreview()
+        }
+        binding.buttonSizeIncreaseFast.setOnClickListener {
+            storage.setTextSize(getValueInBoundary(
+                binding.textSize.text.toString().toInt(),
+                4,
+                256,
+                10,
+            ))
+            binding.textSize.text = storage.getTextSize().toString()
+            updatePreview()
+        }
 
         // --- text colour --- //
         setTextColour(storage.getTextColour())
@@ -155,40 +160,48 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
         }
 
         // --- highlight intensity --- //
-        binding.textIntensity.text = storage.getInt(SettingsPreference.HIGHLIGHT_INTENSITY, 100).toString()
+        binding.textIntensity.text = storage.getHighlightIntensity().toString()
 
-        binding.buttonIntensityDecreaseFast.setOnClickAction(
-            0,
-            100,
-            isPositive = false,
-            isFast = true,
-            binding.textIntensity,
-            SettingsPreference.HIGHLIGHT_INTENSITY,
-        )
-        binding.buttonIntensityDecrease.setOnClickAction(
-            0,
-            100,
-            isPositive = false,
-            isFast = false,
-            binding.textIntensity,
-            SettingsPreference.HIGHLIGHT_INTENSITY,
-        )
-        binding.buttonIntensityIncrease.setOnClickAction(
-            0,
-            100,
-            isPositive = true,
-            isFast = false,
-            binding.textIntensity,
-            SettingsPreference.HIGHLIGHT_INTENSITY,
-        )
-        binding.buttonIntensityIncreaseFast.setOnClickAction(
-            0,
-            100,
-            isPositive = true,
-            isFast = true,
-            binding.textIntensity,
-            SettingsPreference.HIGHLIGHT_INTENSITY,
-        )
+        binding.buttonIntensityDecreaseFast.setOnClickListener {
+            storage.setHighlightIntensity(getValueInBoundary(
+                binding.textIntensity.text.toString().toInt(),
+                0,
+                100,
+                -10,
+            ))
+            binding.textIntensity.text = storage.getHighlightIntensity().toString()
+            updatePreview()
+        }
+        binding.buttonIntensityDecrease.setOnClickListener {
+            storage.setHighlightIntensity(getValueInBoundary(
+                binding.textIntensity.text.toString().toInt(),
+                0,
+                100,
+                -1,
+            ))
+            binding.textIntensity.text = storage.getHighlightIntensity().toString()
+            updatePreview()
+        }
+        binding.buttonIntensityIncrease.setOnClickListener {
+            storage.setHighlightIntensity(getValueInBoundary(
+                binding.textIntensity.text.toString().toInt(),
+                0,
+                100,
+                1,
+            ))
+            binding.textIntensity.text = storage.getHighlightIntensity().toString()
+            updatePreview()
+        }
+        binding.buttonIntensityIncreaseFast.setOnClickListener {
+            storage.setHighlightIntensity(getValueInBoundary(
+                binding.textIntensity.text.toString().toInt(),
+                0,
+                100,
+                10,
+            ))
+            binding.textIntensity.text = storage.getHighlightIntensity().toString()
+            updatePreview()
+        }
 
         // --- highlight colour --- //
         setHighlightColour(storage.getHighlightColour())
@@ -274,17 +287,14 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
                 binding.layoutIntensity.visibility = View.GONE
                 R.id.toggle_button_highlight_background
             }
-
             1 -> { // stroke
                 binding.layoutIntensity.visibility = View.VISIBLE
                 R.id.toggle_button_highlight_stroke
             }
-
             2 -> { // shadow
                 binding.layoutIntensity.visibility = View.VISIBLE
                 R.id.toggle_button_highlight_shadow
             }
-
             else -> { // none
                 binding.layoutIntensity.visibility = View.GONE
                 R.id.toggle_button_highlight_none
@@ -292,41 +302,22 @@ class SettingsNewFragment : BaseFragment(R.layout.fragment_settings_new) {
         }
     }
 
-    // TODO horrible, horrible, horrible function. but it works. fix this in the future. please.
-    private fun MaterialButton.setOnClickAction(
-        min: Int,
-        max: Int,
-        isPositive: Boolean,
-        isFast: Boolean,
-        textField: TextView,
-        pref: SettingsPreference,
-    ) {
-        setOnClickListener {
-            var value = storage.getInt(pref)
-            if (isFast) {
-                if (isPositive) {
-                    if ((value + 10) > max) {
-                        value = max
-                    } else {
-                        value += 10
-                    }
-                } else {
-                    if ((value - 10) < min) {
-                        value = min
-                    } else {
-                        value -= 10
-                    }
-                }
-            } else {
-                if (isPositive && (value != max)) value += 1
-                if (!isPositive && (value != min)) value -= 1
-            }
-
-            storage.setInt(pref, value)
-            textField.text = value.toString()
-
-            updatePreview()
-        }
+    /**
+     * Adds a step to a numeric value while staying within bounds as defined by min and max.
+     *
+     * @param value value to change
+     * @param min   minimum boundary
+     * @param max   maximum boundary
+     * @param step  step to add to the given value; may be positive or negative
+     * @return      new value with step added, or boundary if it would have been exceeded otherwise
+     */
+    private fun getValueInBoundary(value: Int, min: Int, max: Int, step: Int): Int = when {
+        // If the new value exceeds the maximum value, return max
+        (value + step) > max -> max
+        // If the new value is below the minimum value, return min
+        (value + step) < min -> min
+        // Return the value with the step added
+        else -> value + step
     }
 
     private fun setTextColour(colour: String) {

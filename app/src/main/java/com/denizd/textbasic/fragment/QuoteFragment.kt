@@ -12,7 +12,6 @@ import com.denizd.textbasic.db.QuoteStorage
 import com.denizd.textbasic.util.showSnackBar
 import com.denizd.textbasic.util.viewBinding
 
-
 class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDeleteListener {
 
     private lateinit var storage: QuoteStorage

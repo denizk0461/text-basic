@@ -1,10 +1,7 @@
 package com.denizd.textbasic.db
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.Typeface
-import com.denizd.textbasic.util.ColorTransparentUtils
-import com.denizd.textbasic.R
 import com.denizd.textbasic.util.SettingsPreference
 
 class QuoteStorage private constructor(context: Context) {
@@ -69,26 +66,6 @@ class QuoteStorage private constructor(context: Context) {
         prefs.edit().putInt(KEY_TEXT_SIZE, newValue).apply()
     }
 
-    fun getInt(
-        pref: SettingsPreference,
-        defaultValue: Int = 0,
-    ): Int = prefs.getInt(pref.key, defaultValue)
-    fun setInt(
-        pref: SettingsPreference,
-        newValue: Int,
-    ) {
-        prefs.edit().putInt(pref.key, newValue).apply()
-    }
-
-    fun isInvertedEnabled(): Boolean = prefs.getBoolean(KEY_INVERTED, false)
-    fun getTextTransparency(): Int = prefs.getInt(KEY_TEXT_TRANSPARENCY, 100)
-    fun setTextTransparency(newValue: Int) {
-        prefs.edit().putInt(KEY_TEXT_TRANSPARENCY, newValue).apply()
-    }
-    fun getBackgroundTransparency(): Int = prefs.getInt(KEY_BG_TRANSPARENCY, 100)
-    fun setBackgroundTransparency(newValue: Int) {
-        prefs.edit().putInt(KEY_BG_TRANSPARENCY, newValue).apply()
-    }
     fun isOrderRandom(): Boolean = prefs.getBoolean(KEY_RANDOM, false)
     fun setIsOrderRandom(newValue: Boolean) {
         prefs.edit().putBoolean(KEY_RANDOM, newValue).apply()
@@ -123,7 +100,6 @@ class QuoteStorage private constructor(context: Context) {
     fun setTypefaceStyle(newValue: Int) {
         prefs.edit().putInt(KEY_TYPEFACE_STYLE, newValue).apply()
     }
-    fun getOutlineSize(): Float = prefs.getFloat(KEY_OUTLINE_SIZE, 8f)
     fun getOutlineSizeNew(): Int = prefs.getInt(KEY_OUTLINE_SIZE_NEW, 8)
 
     fun getTextColour(): String = prefs.getString(SettingsPreference.TEXT_COLOUR.key, "ffffff") ?: "ffffff"
@@ -136,32 +112,9 @@ class QuoteStorage private constructor(context: Context) {
         prefs.edit().putString(SettingsPreference.HIGHLIGHT_COLOUR.key, newValue).apply()
     }
 
-    // Pair<text colour, background colour>
-    fun getColours(
-        isInverted: Boolean = isInvertedEnabled(),
-        textTransparency: Int = getTextTransparency(),
-        bgTransparency: Int = getBackgroundTransparency(),
-        context: Context
-    ): Pair<Int, Int> {
-        val colours = when (isInverted) {
-            true -> Pair(R.color.widget_dark, R.color.widget_light)
-            false -> Pair(R.color.widget_light, R.color.widget_dark)
-        }
-
-        return Pair(
-            Color.parseColor(
-                ColorTransparentUtils.transparentColor(
-                    context.getColor(colours.first),
-                    textTransparency,
-                )
-            ),//Color.parseColor(ColorTransparentUtils.transparentColor(colours.first, 10)),
-            Color.parseColor(
-                ColorTransparentUtils.transparentColor(
-                    context.getColor(colours.second),
-                    bgTransparency,
-                )
-            )
-        )
+    fun getHighlightIntensity(): Int = prefs.getInt(SettingsPreference.HIGHLIGHT_INTENSITY.key, 10)
+    fun setHighlightIntensity(newValue: Int) {
+        prefs.edit().putInt(SettingsPreference.HIGHLIGHT_INTENSITY.key, newValue).apply()
     }
 
     fun setSize(size: Pair<Int, Int>) {
@@ -172,32 +125,6 @@ class QuoteStorage private constructor(context: Context) {
     }
 
     fun getSize(): Pair<Int, Int> = Pair(prefs.getInt(KEY_AVG_WIDTH, 1), prefs.getInt(KEY_AVG_HEIGHT, 1))
-
-    fun saveSettings(
-        textSize: Int,
-        inverted: Boolean,
-        textTransparency: Int,
-        bgTransparency: Int,
-        random: Boolean,
-        widgetPosition: Int,
-        backgroundType: Int,
-        typefaceIndex: Int,
-        typefaceStyleIndex: Int,
-        outlineSize: Float,
-    ) {
-        prefs.edit().apply {
-            putInt(KEY_TEXT_SIZE, textSize)
-            putBoolean(KEY_INVERTED, inverted)
-            putInt(KEY_TEXT_TRANSPARENCY, textTransparency)
-            putInt(KEY_BG_TRANSPARENCY, bgTransparency)
-            putBoolean(KEY_RANDOM, random)
-            putInt(KEY_WIDGET_POSITION, widgetPosition)
-            putInt(KEY_BACKGROUND_TYPE, backgroundType)
-            putInt(KEY_TYPEFACE, typefaceIndex)
-            putInt(KEY_TYPEFACE_STYLE, typefaceStyleIndex)
-            putFloat(KEY_OUTLINE_SIZE, outlineSize)
-        }.apply()
-    }
 
     fun saveQuotes(quotes: Array<String>) {
         prefs.edit()
