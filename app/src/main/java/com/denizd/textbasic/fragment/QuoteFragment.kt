@@ -23,6 +23,15 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDele
         super.onViewCreated(view, savedInstanceState)
 
         storage = QuoteStorage.getInstance(context)
+
+        if (storage.getAllQuotes().isEmpty()) {
+            storage.noMigrationNecessary()
+        }
+
+        if (storage.needsMigration()) {
+            storage.migrateEntries()
+        }
+
         quoteAdapter = QuoteAdapter(storage.getAllQuotes(), this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)

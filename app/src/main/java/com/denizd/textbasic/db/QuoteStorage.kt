@@ -6,6 +6,8 @@ import com.denizd.textbasic.util.SettingsPreference
 
 class QuoteStorage private constructor(context: Context) {
 
+    private val dao: EntryDao = AppDatabase.getInstance(context).dao()
+
     companion object {
 
         private lateinit var storage: QuoteStorage
@@ -26,8 +28,6 @@ class QuoteStorage private constructor(context: Context) {
         private const val KEY_QUOTES = "quotes"
         private const val KEY_QUOTE_COUNTER = "quotecounter"
         const val KEY_TEXT_SIZE = "textsize"
-        private const val KEY_INVERTED = "inverted"
-        private const val KEY_HIGH_CONTRAST = "hicontrast"
         const val KEY_TEXT_TRANSPARENCY = "transparency_text"
         const val KEY_BG_TRANSPARENCY = "transparency"
         private const val KEY_RANDOM = "random"
@@ -37,7 +37,6 @@ class QuoteStorage private constructor(context: Context) {
         private const val KEY_TYPEFACE_STYLE = "typefacestyle"
         private const val KEY_AVG_WIDTH = "avgwidth"
         private const val KEY_AVG_HEIGHT = "avgheight"
-        private const val KEY_OUTLINE_SIZE = "outlinesize"
         const val KEY_OUTLINE_SIZE_NEW = "outlinesizeint"
     }
 
@@ -130,5 +129,14 @@ class QuoteStorage private constructor(context: Context) {
         prefs.edit()
             .putString(KEY_QUOTES, quotes.joinToString(SEPARATOR.toString()))
             .apply()
+    }
+
+    fun needsMigration(): Boolean = prefs.getBoolean(SettingsPreference.NEEDS_MIGRATION.key, true)
+    fun migrateEntries() {
+        // TODO migrate entries
+        prefs.edit().putBoolean(SettingsPreference.NEEDS_MIGRATION.key, false).apply()
+    }
+    fun noMigrationNecessary() {
+        prefs.edit().putBoolean(SettingsPreference.NEEDS_MIGRATION.key, false).apply()
     }
 }
