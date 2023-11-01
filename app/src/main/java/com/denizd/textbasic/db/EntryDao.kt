@@ -12,6 +12,10 @@ interface EntryDao {
     @Query("SELECT * FROM entries ORDER BY position")
     fun getAllEntries(): LiveData<List<Entry>>
 
+    // Get entries synchronously (no LiveData)
+    @Query("SELECT * FROM entries ORDER BY position")
+    fun getAllEntriesSync(): List<Entry>
+
     @Insert
     fun insertEntries(newEntries: List<Entry>)
 

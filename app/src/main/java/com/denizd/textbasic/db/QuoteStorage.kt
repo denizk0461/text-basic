@@ -3,6 +3,7 @@ package com.denizd.textbasic.db
 import android.content.Context
 import android.graphics.Typeface
 import com.denizd.textbasic.util.SettingsPreference
+import com.google.gson.Gson
 
 class QuoteStorage private constructor(context: Context) {
 
@@ -138,5 +139,11 @@ class QuoteStorage private constructor(context: Context) {
     }
     fun noMigrationNecessary() {
         prefs.edit().putBoolean(SettingsPreference.NEEDS_MIGRATION.key, false).apply()
+    }
+
+    fun exportEntriesAsJson(): String = Gson().toJson(dao.getAllEntriesSync().map { e -> e.text })
+
+    fun importEntriesFromJson(json: String) {
+        // TODO
     }
 }

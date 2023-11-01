@@ -32,6 +32,8 @@ class QuoteFragment : BaseFragment(R.layout.fragment_quote), QuoteAdapter.OnDele
             storage.migrateEntries()
         }
 
+//        Log.d("asdfasdf", storage.exportEntriesAsJson())
+
         quoteAdapter = QuoteAdapter(storage.getAllQuotes(), this)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
