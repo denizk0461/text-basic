@@ -63,6 +63,10 @@
 
     <string name="settings_misc_header">Sonstiges</string>
 
+    <string name="settings_import_title">Einträge von Datei importieren</string>
+    <string name="settings_import_subtitle">Öffnet den Dateiexplorer</string>
+    <string name="settings_export_title">Einträge als Datei exportieren</string>
+    <string name="settings_export_subtitle">Export wird als JSON-Datei abgespeichert</string>
     <string name="settings_licences_title">Siehe Lizenzen</string>
     <string name="settings_licences_subtitle">Ressourcen, die diese App möglich gemacht haben</string>
     <string name="sheet_licences_header">Lizenzen</string>

@@ -9,7 +9,7 @@
     <string name="thickness">thickness</string>
     <string name="intensity">intensity</string>
     <string name="invert">Invert colours</string>
-    <string name="random">Randomise order</string>
+    <string name="random">Shuffle</string>
     <string name="contrast">Increase the contrast</string>
     <string name="info_add_text">add some text!</string>
     <string name="snack_backup_download">Restoring your data…</string>
@@ -54,7 +54,7 @@
     <string name="settings_highlight_transparency_header">Opacity</string>
 
     <string name="settings_widget_header">Widget</string>
-    <string name="settings_widget_order_title">Randomise entry order</string>
+    <string name="settings_widget_order_title">Shuffle entries</string>
     <string name="settings_widget_order_subtitle">Order from the list is preserved otherwise; change by drag-and-drop</string>
     <string name="settings_widget_order_default">Default</string>
     <string name="settings_widget_order_random">Random</string>
@@ -62,6 +62,10 @@
 
     <string name="settings_misc_header">Miscellaneous</string>
 
+    <string name="settings_import_title">Import entries from file</string>
+    <string name="settings_import_subtitle">Opens your file explorer</string>
+    <string name="settings_export_title">Export entries to file</string>
+    <string name="settings_export_subtitle">Export will be saved to a JSON file</string>
     <string name="settings_licences_title">View licences</string>
     <string name="settings_licences_subtitle">Resources that made this app possible</string>
     <string name="sheet_licences_header">Licences</string>

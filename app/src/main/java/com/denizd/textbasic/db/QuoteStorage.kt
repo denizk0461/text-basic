@@ -141,7 +141,7 @@ class QuoteStorage private constructor(context: Context) {
         prefs.edit().putBoolean(SettingsPreference.NEEDS_MIGRATION.key, false).apply()
     }
 
-    fun exportEntriesAsJson(): String = Gson().toJson(dao.getAllEntriesSync().map { e -> e.text })
+    fun exportEntriesAsJson(): String = ""//Gson().toJson(dao.getAllEntriesSync().map { e -> e.text })
 
     fun importEntriesFromJson(json: String) {
         // TODO
